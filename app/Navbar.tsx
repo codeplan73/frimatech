@@ -51,8 +51,8 @@ const Navbar = () => {
       <div
         className={`w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
           isScrolled
-            ? "bg-white bg-opacity-60 backdrop-blur-md"
-            : "bg-slate-600"
+            ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md"
+            : "bg-white"
         }`}
       >
         <div className="mx-auto px-4 py-2 md:py-4 flex items-center justify-between text-white">
@@ -62,7 +62,7 @@ const Navbar = () => {
               alt="Shop Logo"
               height={1000}
               width={1000}
-              className="h-14 w-14"
+              className="h-14 w-14 rounded-full drop-shadow-2xl"
             />
           </Link>
           <ul className="hidden md:flex items-center justify-start space-x-2">
@@ -71,10 +71,9 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-warningColor p-2 rounded-xl": link.href === currentPath,
-                  "text-slate-300": link.href !== currentPath,
-                  "transition-colors hover:text-warningColor p-2 rounded-xl":
-                    true,
+                  "text-[#ff7d00] p-2 rounded-xl": link.href === currentPath,
+                  "text-[#344e41]": link.href !== currentPath,
+                  "transition-colors hover:text-red-500 p-2 rounded-xl": true,
                 })}
               >
                 {link.label}
