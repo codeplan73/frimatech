@@ -45,13 +45,13 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full px-5 top-0 z-50 transition-all duration-300 
+      className={`fixed w-full px-5 top-0 z-50 transition-all duration-300
       }`}
     >
       <div
-        className={`w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
+        className={`group w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
           isScrolled
-            ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md"
+            ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md text-white"
             : "bg-white"
         }`}
       >
@@ -71,9 +71,10 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-[#ff7d00] p-2 rounded-xl": link.href === currentPath,
-                  "text-[#344e41]": link.href !== currentPath,
-                  "transition-colors hover:text-red-500 p-2 rounded-xl": true,
+                  "text-slate-950 p-2 rounded-xl": link.href === currentPath,
+                  "text-slate-400": link.href !== currentPath,
+                  "text-white": isScrolled,
+                  "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
                 })}
               >
                 {link.label}
@@ -86,10 +87,10 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-warningColor p-2 rounded-xl": link.href === currentPath,
-                  "text-slate-300": link.href !== currentPath,
-                  "transition-colors hover:text-warningColor p-2 rounded-xl":
-                    true,
+                  "text-slate-950 p-2 rounded-xl": link.href === currentPath,
+                  "text-slate-500": link.href !== currentPath,
+                  "text-white": isScrolled,
+                  "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
                 })}
               >
                 {link.label}
