@@ -45,24 +45,30 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full px-5 top-0 z-50 transition-all duration-300
+      className={`fixed w-full px-5 top-5 z-50 transition-all duration-300
       }`}
     >
       <div
-        className={`group w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
+        className={`group w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-full  ${
           isScrolled
             ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md text-white"
-            : "bg-white"
+            : "bg-transparent"
         }`}
+        // <div
+        //   className={`group w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
+        //     isScrolled
+        //       ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md text-white"
+        //       : "bg-white"
+        //   }`}
       >
-        <div className="mx-auto px-4 py-2 md:py-4 flex items-center justify-between text-white">
+        <div className="mx-auto px-4  md:py-4 flex items-center justify-between text-white">
           <Link href="/" className="">
             <Image
               src="/images/logo.png"
               alt="Shop Logo"
               height={1000}
               width={1000}
-              className="h-14 w-14 rounded-full drop-shadow-2xl"
+              className="h-8 w-14 rounded drop-shadow-2xl"
             />
           </Link>
           <ul className="hidden md:flex items-center justify-start space-x-2">
