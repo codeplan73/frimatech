@@ -17,55 +17,47 @@ const Home = () => {
       </section> */}
 
       <div className="mx-auto w-full px-6 md:px-32 space-y-8 py-12 bg-slate-100">
-        <h4 className="container md:text-4xl font-bold text-bgPrimary">
+        <h4 className="container text-3xl md:text-4xl font-bold text-bgPrimary">
           Explore Our recommendations
         </h4>
-        <div className="container grid grid-cols-1 md:grid-cols-4 gap-4 ">
-          <div className="col-span-1 bg-slate-200 hidden md:flex">
-            <h4>Category Section</h4>
-          </div>
+        <div className="container grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 p-4 py-4">
+          <ProductCardGrid
+            image="/images/watch.png"
+            price={1400}
+            name="Nokix Digital Camera"
+            rating="7.5"
+            link={`/items`}
+          />
+          <ProductCardGrid
+            image="/images/headset.png"
+            price={5000}
+            name="Headset Pro"
+            rating="7.5"
+            link={`/items`}
+          />
+          <ProductCardGrid
+            image="/images/laptop.png"
+            price={5000}
+            name="Macbook Pro 2020"
+            rating="7.5"
+            link={`/items`}
+          />
+          <ProductCardGrid
+            image="/images/iphone-14-pro-max.jpeg"
+            price={5000}
+            name="Iphone 14 Pro Max"
+            rating="7.5"
+            link={`/items`}
+          />
+        </div>
 
-          <div className="col-span-3 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 p-4">
-            {/* <h4>Product Section</h4> */}
-            {/* 
-            <ProductCard
-              image="/images/headset.png"
-              price={500.0}
-              title="headSet Pro"
-            />
-            <ProductCard
-              image="/images/headset.png"
-              price={500.0}
-              title="headSet Pro"
-            />
-            <ProductCard
-              image="/images/headset.png"
-              price={500.0}
-              title="headSet Pro"
-            /> */}
-
-            <ProductCardGrid
-              image="/images/watch.png"
-              price={1400}
-              name="Nokix Digital Camera"
-              rating="7.5"
-              link={`/items`}
-            />
-            <ProductCardGrid
-              image="/images/headset.png"
-              price={5000}
-              name="Iphone 14 Pro Max"
-              rating="7.5"
-              link={`/items`}
-            />
-            <ProductCardGrid
-              image="/images/laptop.png"
-              price={5000}
-              name="Iphone 14 Pro Max"
-              rating="7.5"
-              link={`/items`}
-            />
-          </div>
+        <div className="container">
+          <Link
+            href="/shop"
+            className="text-bgPrimary py-3 font-sans font-semibold underline"
+          >
+            View Shop
+          </Link>
         </div>
       </div>
 

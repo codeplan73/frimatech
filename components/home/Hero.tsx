@@ -11,13 +11,13 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black opacity-65"></div>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-start pt-52 md:pt-56  items-center px-6">
+      <div className="absolute inset-0 flex flex-col justify-start pt-52 md:pt-56  items-center px-6 gap-8">
         <h4 className="text-center text-4xl md:text-6xl font-extrabold text-textPrimary">
           Buy, Repair, Sell, Swap
         </h4>
-        <h4 className="text-center text-4xl md:text-6xl font-extrabold text-textPrimary">
+        {/* <h4 className="text-center text-4xl md:text-6xl font-extrabold text-textPrimary">
           your gadgets
-        </h4>
+        </h4> */}
 
         <p className="text-lg text-center font-sans  text-md w-full md:w-6/12 my-6 text-textPrimary">
           Explore a world of possibilities with our diverse selection. From
