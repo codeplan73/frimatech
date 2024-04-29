@@ -7,9 +7,20 @@ import { TiThMenu } from "react-icons/ti";
 import { CgMenuMotion } from "react-icons/cg";
 import classnames from "classnames";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const links = [
-  { label: "Shop", href: "/projects" },
+  { label: "Home", href: "/" },
+  { label: "Shop", href: "/shop" },
   { label: "Blog", href: "/services" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -24,6 +35,8 @@ const Navbar = () => {
   const [open, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const currentPath = usePathname();
+  const [position, setPosition] = useState("bottom");
+  const auth = false;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,30 +58,24 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full px-5 top-5 z-50 transition-all duration-300
+      className={`fixed w-full px-5 top-0 z-50 transition-all duration-300
       }`}
     >
       <div
-        className={`group w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-full  ${
+        className={`group w-90 md:w-[80vw] md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
           isScrolled
-            ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md text-white"
-            : "bg-transparent"
+            ? "bg-bgPrimary bg-opacity-90 backdrop-blur-md"
+            : "bg-transparent border-none"
         }`}
-        // <div
-        //   className={`group w-90 md:w-[80vw]  md:px-20 mx-auto transition-all duration-300 border rounded-b-3xl  ${
-        //     isScrolled
-        //       ? "bg-[#344e41] bg-opacity-60 backdrop-blur-md text-white"
-        //       : "bg-white"
-        //   }`}
       >
-        <div className="mx-auto px-4  md:py-4 flex items-center justify-between text-white">
+        <div className="mx-auto px-4  py-4 flex items-center justify-between text-white">
           <Link href="/" className="">
             <Image
               src="/images/logo.png"
               alt="Shop Logo"
               height={1000}
               width={1000}
-              className="h-8 w-14 rounded drop-shadow-2xl"
+              className="h-full w-14 rounded drop-shadow-2xl"
             />
           </Link>
           <ul className="hidden md:flex items-center justify-start space-x-2">
@@ -77,8 +84,8 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-slate-950 p-2 rounded-xl": link.href === currentPath,
-                  "text-slate-400": link.href !== currentPath,
+                  "text-white p-2 rounded-xl": link.href === currentPath,
+                  "text-textPrimary": link.href !== currentPath,
                   "text-white": isScrolled,
                   "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
                 })}
@@ -93,8 +100,8 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-slate-950 p-2 rounded-xl": link.href === currentPath,
-                  "text-slate-500": link.href !== currentPath,
+                  "text-white p-2 rounded-xl": link.href === currentPath,
+                  "text-textPrimary": link.href !== currentPath,
                   "text-white": isScrolled,
                   "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
                 })}
@@ -102,6 +109,31 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+
+            {auth && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="text-slate-900 bg-transparent border-0 hover:bg-slate-900 hover:text-white"
+                  >
+                    Profile
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuRadioGroup
+                    value={position}
+                    onValueChange={setPosition}
+                    className="flex flex-col space-y-1"
+                  >
+                    <Link href={"/profile"}>Profile</Link>
+                    <Link href={"/orders"}>My Orders</Link>
+                    <Link href={"/Settings"}>Settings</Link>
+                    <Link href={"/logout"}>Logout</Link>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </ul>
 
           {open ? (
@@ -128,7 +160,7 @@ const Navbar = () => {
       )}
 
       <ul
-        className={`w-8/12 absolute z-20 bg-white h-screen backdrop:bg-slate-400 left-0 top-0 transform ${
+        className={`w-8/12 absolute z-20 bg-white h-screen backdrop:bg-slate-400 left-0 -top-5 transform py-6 ${
           open ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >

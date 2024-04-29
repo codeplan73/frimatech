@@ -1,7 +1,7 @@
-import Hero from "./components/home/Hero";
-import ProductFilter from "./components/home/ProductFilter";
-import ProductCard from "./components/ProductCard";
-import ProductCardGrid from "./components/ProductCardGrid";
+import Hero from "@/components/home/Hero";
+import ProductFilter from "@/components/home/ProductFilter";
+import ProductCard from "@/components/ProductCard";
+import ProductCardGrid from "@/components/ProductCardGrid";
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       </section>
 
       <section className="w-full px-6 md:px-16 mx-auto container grid grid-cols-1 md:grid-cols-4 gap-4 ">
-        <div className="col-span-1 bg-slate-200">
+        <div className="col-span-1 bg-slate-200 hidden md:flex">
           <h4>Category Section</h4>
         </div>
         <div className="col-span-3 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 p-4">
