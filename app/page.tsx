@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <div className="w-full md:w-12/12 flex flex-col gap-8">
+    <div className="w-full md:w-12/12 flex flex-col">
       <Hero />
 
       <Service />
