@@ -71,11 +71,11 @@ const Navbar = () => {
         <div className="mx-auto px-4  py-4 flex items-center justify-between text-white">
           <Link href="/" className="">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.jpeg"
               alt="Shop Logo"
               height={1000}
               width={1000}
-              className="h-full w-14 rounded drop-shadow-2xl"
+              className="h-full w-24 rounded drop-shadow-2xl"
             />
           </Link>
           <ul className="hidden md:flex items-center justify-start space-x-2">
