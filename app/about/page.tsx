@@ -1,10 +1,53 @@
 import Banner from "@/components/page-banner";
 import React from "react";
 import Image from "next/image";
-import Service from "@/components/home/Service";
 import { GrUserExpert } from "react-icons/gr";
 import { FaTools } from "react-icons/fa";
 import Card from "@/components/about/AboutCard";
+import ServiceCard from "@/components/about/ServiceCard";
+
+const services = [
+  {
+    title: "sales & accessories",
+    text: "At Frima Technology, we offer computer sales and a vast range of accessories to meet all your computing needs. Our extensive collection includes the latest desktop computers, laptops...",
+    image: "/img/sales.jpeg",
+  },
+  {
+    title: "Computer Repair",
+    text: "At Frima Technology, we specialize in providing exceptional computer repair services that cater to all your computer and PC needs be it hardware malfunction.",
+    image: "/img/repair.jpeg",
+  },
+  {
+    title: "Networking",
+    text: "Frima Technology is a leading provider of computer repair and installation services, specializing in comprehensive networking solutions which plays a crucial role in today's world.",
+    image: "/img/network.jpeg",
+  },
+  {
+    title: "Hardware Upgrade",
+    text: "Frima Technology specializes in expert hardware upgrades for computers and PCs, providing reliable and efficient solutions to enhance performance and extend the lifespan of PCs",
+    image: "/img/hardware.jpeg",
+  },
+  {
+    title: "Virus Removal",
+    text: "Frima Technology specializes in comprehensive virus removal services, ensuring efficient and reliable solutions for computers and PCs.",
+    image: "/img/virus.jpeg",
+  },
+  {
+    title: "Software Installation",
+    text: "Frima Technology specializes in providing comprehensive computer and PC repair services, including efficient software installation solutions..",
+    image: "/img/software.jpeg",
+  },
+  {
+    title: "Battery Replacement",
+    text: "One crucial aspect of our comprehensive range of services is battery replacement which plays a vital role in powering portable devices.",
+    image: "/img/battery.jpeg",
+  },
+  {
+    title: "Date Recovery",
+    text: "Frima Technology offers data recovery service, which ensures the retrieval and restoration of valuable information from damaged storage devices.",
+    image: "/img/recovery.jpeg",
+  },
+];
 
 const AboutPage = () => {
   return (
@@ -16,7 +59,7 @@ const AboutPage = () => {
         style={{ backgroundImage: "url('/img/about.png')" }}
       />
 
-      <section className="container w-full py-16 md:py-32 flex flex-col-reverse md:flex-row md:gap-20">
+      <section className="container w-full py-16 md:py-24 flex flex-col-reverse md:flex-row md:gap-20">
         <div className="w-full md:w-6/12 flex flex-col gap-6 p-8">
           <div className="w-full flex items-end justify-start gap-6">
             <Image
@@ -83,13 +126,27 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="bg-slate-100 mx-auto px-10 md:px-36 py-10 md:py-16">
-        <div className="flex items-center justify">
-          <h4>What we offer</h4>
-          <p>
-            {`Customer's`} satisfaction is our ultimate goal. Our specialist
-            techies will diagnose and resolve your computer issues.
+      <section className="bg-slate-100 w-full py-16 md:py-20  flex flex-col gap-12 md:gap-20 md:px-36 px-10">
+        <div className="w-full  mx-auto flex flex-col items-center justify-center gap-6">
+          <h2 className="text-center text-3xl md:text-5xl font-bold text-slate-500">
+            Our Services
+          </h2>
+          <p className="text-center text-slate-500 text-md font-sans ">
+            {`
+          Frima Technology offers you tech services anywhere and anytime. Our techies are reliable, attentive and patient. We also offer reliable secure remote tech assistance. We have served more than 2000 computers in Benin City and Nigeria at large. We guarantee an outstanding experience.
+          `}
           </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {services.map((service) => (
+            <ServiceCard
+              key={service.image}
+              image={service.image}
+              title={service.title}
+              text={service.text}
+            />
+          ))}
         </div>
       </section>
     </div>
