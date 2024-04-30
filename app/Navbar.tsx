@@ -28,7 +28,7 @@ const links = [
 
 const linksAuth = [
   { label: "Cart", href: "/Cart" },
-  { label: "Account", href: "/profile" },
+  { label: "SignIn", href: "/auth/sigin" },
 ];
 
 const Navbar = () => {
