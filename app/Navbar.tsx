@@ -28,7 +28,7 @@ const links = [
 
 const linksAuth = [
   { label: "Cart", href: "/Cart" },
-  { label: "SignIn", href: "/auth/sigin" },
+  { label: "SignIn", href: "/auth/login" },
 ];
 
 const Navbar = () => {
@@ -84,7 +84,8 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-white p-2 rounded-xl": link.href === currentPath,
+                  "text-white p-2 rounded-xl font-semibold":
+                    link.href === currentPath,
                   "text-textPrimary": link.href !== currentPath,
                   "text-white": isScrolled,
                   "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
@@ -100,7 +101,8 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  "text-white p-2 rounded-xl": link.href === currentPath,
+                  "text-white p-2 rounded-xl font-semibold":
+                    link.href === currentPath,
                   "text-textPrimary": link.href !== currentPath,
                   "text-white": isScrolled,
                   "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,

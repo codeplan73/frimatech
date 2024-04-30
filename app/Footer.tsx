@@ -18,10 +18,10 @@ const socials = [
 const Footer = () => {
   const date = new Date().getFullYear();
   return (
-    <div className="flex flex-col p-4 container px-12 md:px-32 gap-8 py-20">
+    <div className="flex flex-col p-4 px-12 md:px-32 gap-8 py-20 bg-textPrimary">
       <div className="flex flex-col md:flex-row items-start gap-12">
         <div className="flex flex-col space-y-2">
-          <h4 className="text-xl font-semibold text-slate-600">Get In Touch</h4>
+          <h4 className="text-xl font-semibold text-bgPrimary">Get In Touch</h4>
           {/* <Image
             alt="logo"
             className="h-24 w-36"
@@ -48,29 +48,29 @@ const Footer = () => {
 
         <div className="flex items-start justify-start space-x-6">
           <div className="flex flex-col space-y-2">
-            <h4 className="text-xl font-semibold text-slate-600">About</h4>
-            <Link className="text-md text-slate-400" href="/blog">
+            <h4 className="text-xl font-semibold text-bgPrimary">About</h4>
+            <Link className="text-md text-bgPrimary" href="/blog">
               Blog
             </Link>
-            <Link className="text-md text-slate-400" href="/blog">
+            <Link className="text-md text-bgPrimary" href="/blog">
               Meet the team
             </Link>
-            <Link className="text-md text-slate-400" href="/blog">
+            <Link className="text-md text-bgPrimary" href="/blog">
               Shop
             </Link>
           </div>
           <div className="flex flex-col space-y-2 ">
-            <h4 className="text-xl font-semibold text-slate-600">Support</h4>
-            <Link className="text-md text-slate-400" href="/blog">
+            <h4 className="text-xl font-semibold text-bgPrimary">Support</h4>
+            <Link className="text-md text-bgPrimary" href="/blog">
               Contact Us
             </Link>
-            <Link className="text-md text-slate-400" href="/">
+            <Link className="text-md text-bgPrimary" href="/">
               Return
             </Link>
-            <Link className="text-md text-slate-400" href="/blog">
+            <Link className="text-md text-bgPrimary" href="/blog">
               FAQ
             </Link>
-            <Link className="text-md text-slate-400" href="/blog">
+            <Link className="text-md text-bgPrimary" href="/blog">
               Terms
             </Link>
           </div>
@@ -96,7 +96,7 @@ const Footer = () => {
       <hr className="" />
 
       <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-4 ">
-        <p className="text-sm text-slate-500 text-center">
+        <p className="text-sm text-bgPrimary text-center">
           Copyright &copy; 2022 - {date}. All rights reserved. Powered by{" "}
           <Link
             target="_blank"
@@ -106,11 +106,11 @@ const Footer = () => {
             Globe-Raven
           </Link>
         </p>
-        <div className="space-x-8 text-sm font-semibold text-slate-500">
-          <Link className="hover:text-bgPrimary" href="/terms">
+        <div className="space-x-8 text-sm font-semibold text-bgPrimary">
+          <Link className="text-bgPrimary" href="/terms">
             Terms of Service
           </Link>
-          <Link className="hover:text-bgPrimary" href="/policy" target="blank">
+          <Link className="text-bgPrimary" href="/policy" target="blank">
             Privacy Policy
           </Link>
         </div>
