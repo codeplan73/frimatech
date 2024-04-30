@@ -10,14 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
 import Banner from "@/components/page-banner";
 import Link from "next/link";
 
@@ -60,7 +52,10 @@ const LoginPage = () => {
               </div>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button variant="secondary" type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full bg-bgPrimary text-textPrimary hover:text-white"
+              >
                 SignIn
               </Button>
             </CardFooter>
