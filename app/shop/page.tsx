@@ -6,9 +6,8 @@ const ShopPage = () => {
     <div className="flex flex-col gap-20">
       <Banner
         currentPage="Shop"
-        pageTitle="Shop Page"
+        title="Shop Page"
         link="/"
-        className=""
         style={{ backgroundImage: "url('/img/shop.png')" }}
       />
       <h4 className="text-4xl">SHop Page</h4>

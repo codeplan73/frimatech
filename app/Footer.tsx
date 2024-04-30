@@ -97,7 +97,7 @@ const Footer = () => {
 
       <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-4 ">
         <p className="text-sm text-slate-500 text-center">
-          Copyright &copy; 2022 - {date}. All rights reserved. Powered by
+          Copyright &copy; 2022 - {date}. All rights reserved. Powered by{" "}
           <Link
             target="_blank"
             className="font-bold text-bgPrimary"

@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import ServiceCard from "./services-card";
 
-const services = [
+export const services = [
   {
     icon: "🛠",
     title: "Computer Repair",
