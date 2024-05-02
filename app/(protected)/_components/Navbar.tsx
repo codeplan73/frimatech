@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import { IoMenuSharp } from "react-icons/io5";
-import { IoMailOutline } from "react-icons/io5";
-import { FaRegBell } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
-import Image from "next/image";
-import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { menuLinks } from "./menuLinks";
@@ -32,60 +28,27 @@ const Navbar = () => {
   console.log(session);
 
   return (
-    <nav className="w-full mx-auto px-5 py-5 flex items-center space-x-2  shadow-md z-10 bg-white">
+    <nav className="w-full mx-auto px-5 py-5 flex items-center space-x-2  shadow-md z-10 ">
       <ul className="flex md:hidden items-center justify-between w-full space-x-4">
         <IoMenuSharp
           className="block md:hidden cursor-pointer text-2xl"
           onClick={() => setIsOpen(!open)}
         />
         <Link href="/profile" className="block md:hidden">
-          {session?.data?.user?.image ? (
-            <div className="flex items-center justify-start space-x-2">
-              <Image
-                src={session?.data?.user?.image}
-                alt={session?.data?.user?.name!}
-                className="text-4xl rounded-full border-2 border-slate-500 drop-shadow-xl p-1"
-              />
-              <div className="flex flex-col items-start text-sm ">
-                <span className="font-bold">{session?.data?.user?.name}</span>
-                <span>{session?.data?.user?.email}</span>
-              </div>
-            </div>
-          ) : (
-            <div className="flex items-center justify-start space-x-2">
-              <CiUser className="text-4xl hover:bg-warningColor hover:text-white hover:border-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
-              <div className="flex flex-col items-start text-sm ">
-                <span className="font-bold">{session?.data?.user?.name}</span>
-                <span>{session?.data?.user?.email}</span>
-              </div>
-            </div>
-          )}
+          <div className="flex items-center justify-start space-x-2">
+            <CiUser className="text-4xl hover:bg-warningColor hover:text-white hover:border-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
+          </div>
         </Link>
       </ul>
       <ul className="hidden md:flex items-center justify-end w-full space-x-4">
-        <Link href="/notification">
-          <IoMailOutline className="text-2xl hover:border-warningColor hover:text-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
-        </Link>
-        <Link href="/mail">
-          <FaRegBell className="text-2xl hover:border-warningColor hover:text-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
-        </Link>
-        <Separator orientation="vertical" />
         <Link href="/profile">
-          {session?.data?.user?.image ? (
-            <Image
-              src={session?.data?.user?.image}
-              alt={session?.data?.user?.name!}
-              className="text-4xl rounded-full border-2 border-slate-500 drop-shadow-xl p-1"
-            />
-          ) : (
-            <div className="flex items-center justify-start space-x-2">
-              <CiUser className="text-4xl hover:bg-warningColor hover:text-white hover:border-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
-              <div className="flex flex-col items-start text-sm ">
-                <span className="font-bold">{session?.data?.user?.name}</span>
-                <span>{session?.data?.user?.email}</span>
-              </div>
+          <div className="flex items-center justify-start space-x-2">
+            <CiUser className="text-4xl hover:bg-warningColor hover:text-white hover:border-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
+            <div className="flex flex-col items-start text-sm ">
+              <span className="font-bold">{session?.data?.user?.name}</span>
+              <span>{session?.data?.user?.email}</span>
             </div>
-          )}
+          </div>
         </Link>
       </ul>
 

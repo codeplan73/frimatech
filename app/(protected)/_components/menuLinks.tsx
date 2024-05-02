@@ -5,6 +5,27 @@ import { FiUsers } from "react-icons/fi";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { RiSettings5Line } from "react-icons/ri";
 
+export const clientLink = [
+  {
+    id: 1,
+    label: "Dashboard",
+    link: "/dasboard",
+    icon: <LuLayoutDashboard />,
+  },
+  {
+    id: 2,
+    label: "My Orders",
+    link: "/products",
+    icon: <LuClipboardList />,
+  },
+  {
+    id: 6,
+    label: "Settings",
+    link: "/settings",
+    icon: <RiSettings5Line />,
+  },
+];
+
 export const menuLinks = [
   {
     id: 1,
@@ -14,20 +35,20 @@ export const menuLinks = [
   },
   {
     id: 2,
-    label: "Payments",
-    link: "/payments",
+    label: "Orderes",
+    link: "/orders",
     icon: <LuPoundSterling />,
   },
   {
     id: 3,
-    label: "All Bookings",
-    link: "/bookings",
+    label: "Products",
+    link: "/products",
     icon: <LuClipboardList />,
   },
   {
     id: 4,
-    label: "All Staff",
-    link: "/users",
+    label: "Blog",
+    link: "/blog",
     icon: <FiUsers />,
   },
   {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
