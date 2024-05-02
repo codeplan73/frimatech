@@ -8,6 +8,7 @@ import { CgMenuMotion } from "react-icons/cg";
 import classnames from "classnames";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,6 +38,7 @@ const Navbar = () => {
   const currentPath = usePathname();
   const [position, setPosition] = useState("bottom");
   const auth = false;
+  const session = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +60,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full px-5 top-0 z-50 transition-all duration-300
+      className={`fixed w-full px-5 top-0 z-50 transition-all duration-300 mb-40
       }`}
     >
       <div

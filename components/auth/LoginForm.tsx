@@ -51,7 +51,8 @@ const RegisterForm = () => {
       setSubmitting(false);
     } catch (error: any) {
       setSubmitting(false);
-      toast.error(error.response.data.message);
+      console.error(error.response.data.error);
+      toast.error(error.response.data.error);
     }
   };
 
