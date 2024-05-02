@@ -66,6 +66,7 @@ model User {
   phone_number  String    @db.VarChar(20)
   address       String    @db.VarChar(255)
   city          String    @db.VarChar(50)
+  state         String    @db.VarChar(50)
   gender        String
   orders        Order[]
   role          UserRole  @default(CLIENT)

@@ -162,7 +162,7 @@ const Navbar = () => {
       )}
 
       <ul
-        className={`w-8/12 absolute z-20 bg-white h-screen backdrop:bg-slate-400 left-0 -top-5 transform py-6 ${
+        className={`w-8/12 absolute z-20 h-screen bg-white backdrop:bg-slate-400 left-0 -top-0 transform py-6 ${
           open ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >

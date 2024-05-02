@@ -13,7 +13,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
   if (!validatedFields.success)
     return NextResponse.json(validatedFields.error.format(), { status: 400 });
 
-  const { name, email, password, phone_number, city, address } =
+  const { name, email, password, phone_number, city, state, gender, address } =
     validatedFields.data;
 
   const existingUser = await getUserByEmail(email);
@@ -29,10 +29,12 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const newUser = await db.user.create({
       data: {
         name,
-        email,
         phone_number,
-        city,
         address,
+        city,
+        state,
+        gender,
+        email,
         password: hashedPassword,
       },
     });

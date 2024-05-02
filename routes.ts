@@ -6,19 +6,12 @@
 export const publicRoutes = [
   "/",
   "/about",
-  "/booking",
+  "/shop",
   "/contact",
   "/policy",
-  "/projects",
-  "/services",
+  "/cart",
+  "/blog",
   "/terms",
-  "/testimonial",
-
-  "/api/bookings",
-  "/api/users",
-  "/api/users/id",
-  "/api/users/staff",
-  "/api/users/customers",
 ];
 
 /**
