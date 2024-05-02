@@ -63,11 +63,10 @@ model User {
   password      String    @db.VarChar(255)
   emailVerified DateTime?
   name          String    @db.VarChar(100)
-  phone_number  String?   @db.VarChar(20)
-  address       String?   @db.VarChar(255)
-  city          String?   @db.VarChar(50)
-  dob           String?
-  gender        String?
+  phone_number  String    @db.VarChar(20)
+  address       String    @db.VarChar(255)
+  city          String    @db.VarChar(50)
+  gender        String
   orders        Order[]
   role          UserRole  @default(CLIENT)
   accounts      Account[]
