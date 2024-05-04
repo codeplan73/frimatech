@@ -35,7 +35,7 @@ export const menuLinks = [
   },
   {
     id: 2,
-    label: "Orderes",
+    label: "Orders",
     link: "/orders",
     icon: <LuPoundSterling />,
   },

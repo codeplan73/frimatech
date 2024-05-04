@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   env: {
     AUTH_SECRET: process.env.AUTH_SECRET,
   },

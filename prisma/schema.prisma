@@ -78,10 +78,10 @@ model Product {
   name        String
   description String
   price       Float
-  image       String
+  discount_price       Float
+  imageUrl       String
   category    String
   quantity    Int
-  storageSize String
   thumbNail   String
   orders      Order[]
   createdAt   DateTime @default(now())

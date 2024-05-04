@@ -18,8 +18,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { RegisterSchema } from "@/schema";
-import InputField from "@/components/InputField";
-import SelectField from "@/components/SelectField";
+import InputField from "@/components/form-fields/InputField";
+import SelectField from "@/components/form-fields/SelectField";
 
 import {
   Card,

@@ -4,7 +4,9 @@ interface CardWrapperProps {
 
 const InputWrapper = ({ children }: CardWrapperProps) => {
   return (
-    <div className="flex flex-col md:flex-row w-full gap-4">{children}</div>
+    <div className="w-full flex flex-col md:flex-row items-start space-y-6 md:space-y-0 md:space-x-6">
+      {children}
+    </div>
   );
 };
 

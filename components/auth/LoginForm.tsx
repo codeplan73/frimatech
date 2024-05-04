@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { LoginSchema } from "@/schema";
-import InputField from "@/components/InputField";
+import InputField from "@/components/form-fields/InputField";
 
 import {
   Card,

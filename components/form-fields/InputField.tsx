@@ -25,7 +25,7 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder,
   hidden,
 }) => (
-  <div className="flex flex-col space-y-1.5 flex-1">
+  <div className="flex flex-col space-y-1.5 w-full">
     <label htmlFor={label}>{label}</label>
     <Input
       {...register(name)}

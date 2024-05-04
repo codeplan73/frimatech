@@ -73,19 +73,14 @@ const baseUpdateSchema = {
 
 export const UpdateStaffSchema = z.object(baseUpdateSchema);
 
-export const priceSchema = z.object({
-  id: z.string().min(1, { message: "Id is required" }),
-  hourly_rate: z.string().min(1, { message: "Hourly Rate is required" }),
-  bedroom_count: z.string().min(1, { message: "bedroom amount is required" }),
-  bathroom_count: z.string().min(1, { message: "bathroom amount is required" }),
-  standard: z.string().min(1, { message: "standard amount is required" }),
-  deep_clean: z.string().min(1, { message: "deep clean amount is required" }),
-  move_in_out: z.string().min(1, { message: "Move in/out price is required" }),
-  post_construction: z
+export const ProductSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().min(1, { message: "Name is required" }),
+  description: z
     .string()
-    .min(1, { message: "Post Construction amount is required" }),
-  extra_task: z.string().min(1, { message: "Extra task amount is required" }),
-  bring_our_own_materials: z
-    .string()
-    .min(1, { message: "Our material price is required" }),
+    .min(1, { message: "Product description is required" }),
+  price: z.string().min(1, { message: "price required" }),
+  imageUrl: z.array(z.string().url()).min(1, { message: "Image is required" }),
+  category: z.string().min(1, { message: "category required" }),
+  quantity: z.string().min(1, { message: "Quantity required" }),
 });

@@ -25,8 +25,6 @@ const Navbar = () => {
     }
   };
 
-  console.log(session);
-
   return (
     <nav className="w-full mx-auto px-5 py-5 flex items-center space-x-2  shadow-md z-10 ">
       <ul className="flex md:hidden items-center justify-between w-full space-x-4">
