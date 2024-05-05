@@ -68,20 +68,23 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex justify-between items-center py-4">
+      <div className="flex justify-between items-center py-4 space-x-6">
         <Input
           placeholder="Filter Name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          value={
+            (table.getColumn("productName")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn("productName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
         <Link
           href={"/products/new"}
-          className="flex items-center space-x-2 shadow-md p-2 rounded-md bg-textPrimary text-bgPrimary"
+          className="flex items-center space-x-2 shadow-md p-3  rounded-md bg-textPrimary text-bgPrimary"
         >
-          <FaPlus className="" /> <span>New Product</span>
+          <FaPlus className="" />{" "}
+          <span className="hidden md:block">New Product</span>
         </Link>
       </div>
       <div className="rounded-md border">

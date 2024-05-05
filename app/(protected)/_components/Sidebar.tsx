@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <aside className="bg-textPrimary hidden h-full md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 px-4 py-6 gap-6 shadow-lg z-10 ">
       <Image
-        src="/img/logo.png"
+        src="/images/logo.jpeg"
         alt="logo"
         height={100}
         width={100}

@@ -74,13 +74,11 @@ const baseUpdateSchema = {
 export const UpdateStaffSchema = z.object(baseUpdateSchema);
 
 export const ProductSchema = z.object({
-  id: z.string().optional(),
-  name: z.string().min(1, { message: "Name is required" }),
-  description: z
-    .string()
-    .min(1, { message: "Product description is required" }),
+  productName: z.string().min(1, { message: "Name is required" }),
+  description: z.string().min(1, { message: "description required" }),
   price: z.string().min(1, { message: "price required" }),
-  imageUrl: z.array(z.string().url()).min(1, { message: "Image is required" }),
+  imageUrl: z.string().optional(),
   category: z.string().min(1, { message: "category required" }),
   quantity: z.string().min(1, { message: "Quantity required" }),
+  // imageUrl: z.array(z.string().url()).min(1, { message: "Image is required" }),
 });

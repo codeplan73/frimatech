@@ -10,6 +10,7 @@ import classnames from "classnames";
 import { usePathname } from "next/navigation";
 import { LuLogOut } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
   const router = useRouter();
@@ -26,17 +27,26 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full mx-auto px-5 py-5 flex items-center space-x-2  shadow-md z-10 ">
+    <nav className="w-full mx-auto px-5 py-5 flex items-center space-x-2  shadow-md z-10 bg-textPrimary md:bg-white">
       <ul className="flex md:hidden items-center justify-between w-full space-x-4">
+        {/* <Link href="/profile" className="block md:hidden">
+          <div className="flex items-center justify-start space-x-2">
+            <CiUser className="text-4xl hover:bg-warningColor hover:text-white hover:border-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
+          </div>
+        </Link> */}
+
+        <Image
+          src="/images/logo.jpeg"
+          alt="logo"
+          height={100}
+          width={100}
+          className="rounded"
+        />
+
         <IoMenuSharp
           className="block md:hidden cursor-pointer text-2xl"
           onClick={() => setIsOpen(!open)}
         />
-        <Link href="/profile" className="block md:hidden">
-          <div className="flex items-center justify-start space-x-2">
-            <CiUser className="text-4xl hover:bg-warningColor hover:text-white hover:border-warningColor rounded-full border border-slate-500 drop-shadow-xl p-1" />
-          </div>
-        </Link>
       </ul>
       <ul className="hidden md:flex items-center justify-end w-full space-x-4">
         <Link href="/profile">
@@ -58,7 +68,7 @@ const Navbar = () => {
       )}
 
       <ul
-        className={`w-6/12 absolute z-20 bg-white h-screen backdrop:bg-slate-400 -left-2 top-0 transform ${
+        className={`w-8/12 absolute z-20 bg-textPrimary h-screen backdrop:bg-slate-400 -left-2 top-0 transform  p-2 ${
           open ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
@@ -69,10 +79,10 @@ const Navbar = () => {
               href={link.link}
               onClick={() => setIsOpen(false)}
               className={classnames({
-                "text-primaryColor bg-amber-50 p-2 rounded-xl":
+                "text-primaryColor bg-amber-50 rounded-xl":
                   link.link === currentPath,
                 "text-slate-700": link.link !== currentPath,
-                "flex text-lg items-center space-x-4 w-full hover:bg-amber-50 py-4 px-4 ":
+                "flex text-lg items-center space-x-4 w-full hover:bg-amber-50 py-2 px-2 ":
                   true,
               })}
             >

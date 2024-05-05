@@ -75,14 +75,12 @@ model User {
 
 model Product {
   id          String   @id @default(cuid())
-  name        String
+  productName        String
   description String
   price       Float
-  discount_price       Float
   imageUrl       String
   category    String
   quantity    Int
-  thumbNail   String
   orders      Order[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

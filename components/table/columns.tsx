@@ -5,6 +5,7 @@ import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
+import { Product } from "@prisma/client";
 
 import {
   DropdownMenu,
@@ -14,16 +15,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 // export type Payment = Booking;
 
-export type Payment = {
-  id: string;
-  image: string;
-  name: string;
-  category: string;
-  quantity: number;
-  price: number;
-};
+export type Payment = Product;
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -32,7 +27,7 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       return (
         <Image
-          src={row.original.image}
+          src={row.original.imageUrl}
           alt="Product"
           width={32}
           height={32}
@@ -42,7 +37,7 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
   {
-    accessorKey: "name",
+    accessorKey: "productName",
     header: ({ column }) => {
       return (
         <Button
@@ -79,27 +74,32 @@ export const columns: ColumnDef<Payment>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const product = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View Product</DropdownMenuItem>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-500">
-              Delete Product
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Link href={`/products/edit/${product.id}`}>Edit Product</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href={`/product/delete/${product.id}`}>
+                  Delete Product
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </>
       );
     },
   },

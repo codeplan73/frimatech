@@ -15,18 +15,21 @@ import InputField from "@/components/form-fields/InputField";
 import InputTextArea from "@/components/form-fields/InputTextArea";
 import InputFieldWrapper from "@/components/form-fields/InputWrapper";
 import SelectField from "@/components/form-fields/SelectField";
-import { User } from "@prisma/client";
 import ImageUpload from "@/app/(protected)/_components/ImageUpload";
-import { Input } from "@/components/ui/input";
+import SimpleMDE from "react-simplemde-editor";
+import "easymde/dist/easymde.min.css";
 
 export type ProductSchemaData = z.infer<typeof ProductSchema>;
 
 // const IssueForm = ({ issue }: { issue?: Issue }) => {
-const NewForm = ({ user }: { user?: User }) => {
+const NewForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, setSubmitting] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string[]>([]);
+  const [imageUrl, setImageUrl] = useState("");
+  const [thumbNail, setThumbNail] = useState("");
+  // const [imageUrl, setImageUrl] = useState<string[]>([]);s
+  // const [imageUrl, setImageUrl] = useState(product?.imageUrl || "");
   const router = useRouter();
 
   const {
@@ -39,28 +42,32 @@ const NewForm = ({ user }: { user?: User }) => {
     resolver: zodResolver(ProductSchema),
   });
 
-  const handleRegisterStaff = async (data: ProductSchemaData) => {
+  const handleRegister = async (data: ProductSchemaData) => {
     const productData = {
       ...data,
       imageUrl: imageUrl,
     };
 
-    console.log(productData);
     try {
-      // setSubmitting(true);
+      setSubmitting(true);
       const response = await axios.post("/api/products", productData);
-      toast.success("Staff Created successfully!");
-      router.refresh();
-      router.push("/products");
-      // setSubmitting(false);
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        router.refresh();
+        router.push("/products");
+        setSubmitting(false);
+      } else {
+        toast.error(response.data.message);
+        setSubmitting(false);
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   return (
     <form
-      onSubmit={handleSubmit(handleRegisterStaff)}
+      onSubmit={handleSubmit(handleRegister)}
       className="w-full md:w-10/12 flex flex-col items-start md:gap-4 gap-6 bg-white p-4"
     >
       <InputFieldWrapper>
@@ -70,7 +77,7 @@ const NewForm = ({ user }: { user?: User }) => {
           placeholder="Enter Product Name"
           type="text"
           errors={errors}
-          name="name"
+          name="productName"
           disabled={isPending}
         />
         <SelectField
@@ -78,7 +85,8 @@ const NewForm = ({ user }: { user?: User }) => {
           options={[
             { value: "", label: "Select Category" },
             { value: "Phones", label: "Phones" },
-            { value: "Laptop", label: "laptop" },
+            { value: "Laptop", label: "Laptop" },
+            { value: "Watch", label: "Watch" },
             { value: "Speakers", label: "Speakers" },
             { value: "System Accessories", label: "System Accessories" },
             { value: "Phone Accessories", label: "Phonee Accessories" },
@@ -111,14 +119,18 @@ const NewForm = ({ user }: { user?: User }) => {
       </InputFieldWrapper>
 
       <InputFieldWrapper>
-        <InputTextArea
-          label="Product Description"
-          register={register}
-          placeholder="Enter Product Description"
-          type="text"
-          errors={errors}
-          name="description"
+        <Controller
           disabled={isPending}
+          name="description"
+          control={control}
+          // defaultValue={product?.longDescription}
+          render={({ field }) => (
+            <SimpleMDE
+              className="w-full"
+              placeholder="Enter Product Description"
+              {...field}
+            />
+          )}
         />
       </InputFieldWrapper>
 
@@ -144,7 +156,9 @@ const NewForm = ({ user }: { user?: User }) => {
         )}
       </InputFieldWrapper> */}
         {/* <ImageUpload setImageUrl={setImageUrl} /> */}
-        <ImageUpload imageUrl={imageUrl} setImageUrl={setImageUrl} />
+        <ImageUpload setThumbNail={setThumbNail} setImageUrl={setImageUrl} />
+        {/* <ImageUpload setImageUrl={setImageUrl} />
+        <ImageUpload imageUrl={imageUrl} setImageUrl={setImageUrl} /> */}
       </InputFieldWrapper>
 
       <InputFieldWrapper>
