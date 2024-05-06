@@ -10,11 +10,11 @@ import { IoIosSend } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { CategoryeSchema } from "@/schema";
+import { CategorySchema } from "@/schema";
 import InputField from "@/components/form-fields/InputField";
 import InputFieldWrapper from "@/components/form-fields/InputWrapper";
 
-export type CategoryeSchemaData = z.infer<typeof CategoryeSchema>;
+export type CategoryeSchemaData = z.infer<typeof CategorySchema>;
 
 const CategoryForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -29,7 +29,7 @@ const CategoryForm = () => {
     reset,
     formState: { errors },
   } = useForm<CategoryeSchemaData>({
-    resolver: zodResolver(CategoryeSchema),
+    resolver: zodResolver(CategorySchema),
   });
 
   const handleRegister = async (data: CategoryeSchemaData) => {

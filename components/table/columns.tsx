@@ -68,7 +68,7 @@ export const columns: ColumnDef<Payment>[] = [
       const product = row.original;
 
       return (
-        <div className="space-x-2">
+        <div className="flex gap-1 items-center space-x-2">
           <Link
             className="border border-bgPrimary text-bgPrimary rounded-md p-2"
             href={`/products/edit/${product.id}`}

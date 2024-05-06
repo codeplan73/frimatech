@@ -10,10 +10,9 @@ import { IoIosSend } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { ProductSchema, ProductUpdateSchema } from "@/schema";
+import { ProductSchema, ProductUpdateSchema, CategorySchema } from "@/schema";
 import InputField from "@/components/form-fields/InputField";
 import InputFieldWrapper from "@/components/form-fields/InputWrapper";
-import SelectField from "@/components/form-fields/SelectField";
 import ImageUpload from "@/app/(protected)/_components/ImageUpload";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
@@ -21,6 +20,7 @@ import Image from "next/image";
 
 export type ProductSchemaData = z.infer<typeof ProductSchema>;
 export type ProductUpdateSchemaData = z.infer<typeof ProductUpdateSchema>;
+export type CategorySchemaData = z.infer<typeof CategorySchema>;
 
 const ProductForm = ({ product }: { product?: ProductUpdateSchemaData }) => {
   const [error, setError] = useState<string | undefined>("");
@@ -28,6 +28,7 @@ const ProductForm = ({ product }: { product?: ProductUpdateSchemaData }) => {
   const [isPending, setSubmitting] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [thumbNail, setThumbNail] = useState("");
+  const [categories, setCategories] = useState<CategorySchemaData[]>([]);
   // const [imageUrl, setImageUrl] = useState<string[]>([]);s
   // const [imageUrl, setImageUrl] = useState(product?.imageUrl || "");
   const router = useRouter();
@@ -47,6 +48,19 @@ const ProductForm = ({ product }: { product?: ProductUpdateSchemaData }) => {
       setImageUrl(product.imageUrl);
     }
   }, [product]);
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await axios.get("/api/category");
+        setCategories(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCategory();
+  }, []); // Changed from [categories] to []
 
   const handleRegister = async (data: ProductSchemaData) => {
     const productData = {
@@ -96,21 +110,30 @@ const ProductForm = ({ product }: { product?: ProductUpdateSchemaData }) => {
           value={product?.productName}
           disabled={isPending}
         />
-        <SelectField
-          register={register}
-          options={[
-            { value: "", label: "Select Category" },
-            { value: "Phones", label: "Phones" },
-            { value: "Laptop", label: "Laptop" },
-            { value: "Watch", label: "Watch" },
-            { value: "Speakers", label: "Speakers" },
-            { value: "System Accessories", label: "System Accessories" },
-            { value: "Phone Accessories", label: "Phonee Accessories" },
-          ]}
-          label="Product Category"
-          name="category"
-          errors={errors}
-        />
+        <div className="flex flex-col space-y-1 w-full">
+          <label htmlFor="category">Category</label>
+          <select
+            {...register("category")}
+            className={`border focus:outline-blue-400 rounded-md p-2  ${
+              errors.category ? "border-red-500" : "border-slate-300"
+            }`}
+          >
+            <option value={product ? product.category : ""}>
+              {product ? product.category : "Select Category"}
+            </option>
+
+            {Array.isArray(categories) &&
+              categories.length !== 0 &&
+              categories.map((category) => (
+                <option key={category.name} value={category.name}>
+                  {category.label}
+                </option>
+              ))}
+          </select>
+          <p className="text-red-600 text-xs font-extralight">
+            {errors.category?.message}
+          </p>
+        </div>
       </InputFieldWrapper>
 
       <InputFieldWrapper>
