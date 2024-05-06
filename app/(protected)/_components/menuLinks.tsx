@@ -4,18 +4,21 @@ import { LuClipboardList } from "react-icons/lu";
 import { FiUsers } from "react-icons/fi";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { RiSettings5Line } from "react-icons/ri";
+import { MdOutlineCategory } from "react-icons/md";
+import { GrBlog } from "react-icons/gr";
+import { FcProcess } from "react-icons/fc";
 
 export const clientLink = [
   {
     id: 1,
     label: "Dashboard",
-    link: "/dasboard",
+    link: "/dasboards",
     icon: <LuLayoutDashboard />,
   },
   {
     id: 2,
     label: "My Orders",
-    link: "/products",
+    link: "/orders",
     icon: <LuClipboardList />,
   },
   {
@@ -37,7 +40,7 @@ export const menuLinks = [
     id: 2,
     label: "Orders",
     link: "/orders",
-    icon: <LuPoundSterling />,
+    icon: <FcProcess />,
   },
   {
     id: 3,
@@ -47,9 +50,15 @@ export const menuLinks = [
   },
   {
     id: 4,
+    label: "Category",
+    link: "/categories",
+    icon: <MdOutlineCategory />,
+  },
+  {
+    id: 4,
     label: "Blog",
     link: "/blog",
-    icon: <FiUsers />,
+    icon: <GrBlog />,
   },
   {
     id: 5,
