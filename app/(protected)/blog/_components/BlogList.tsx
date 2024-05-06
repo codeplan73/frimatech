@@ -1,7 +1,20 @@
-import React from "react";
+import { blogColumns } from "@/components/table//blogColumn";
+import { BlogDataTable } from "@/components/table/blogTable";
+import { db } from "@/lib/db";
+import { Blog } from "@prisma/client";
 
-const BlogList = () => {
-  return <div>BlogList</div>;
-};
+export default async function BlogList() {
+  const blog: Blog[] = await db.blog.findMany({
+    orderBy: { id: "desc" },
+  });
 
-export default BlogList;
+  if (!blog) return null;
+
+  return (
+    <div>
+      <BlogDataTable columns={blogColumns} data={blog} />
+    </div>
+  );
+}
+
+export const revalidate = 1;

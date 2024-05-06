@@ -39,7 +39,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           multiple: false,
           maxFiles: 5,
           // showAdvancedOptions: true,
-          folder: "musa/shop",
+          folder: "musa/blog",
         }}
         onUpload={(result) => {
           if (result.event !== "success") return;
