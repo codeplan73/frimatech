@@ -1,7 +1,7 @@
 import React from "react";
 import { db } from "@/lib/db";
 import BreadCumNav from "@/components/BreadCumNav";
-import ProductForm from "../../_component/ProductForm";
+import ProductForm from "../../_components/ProductForm";
 
 interface Props {
   params: { id: string };

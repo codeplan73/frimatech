@@ -1,6 +1,6 @@
 import BreadCumNav from "@/components/BreadCumNav";
 import React from "react";
-import CategoryList from "./_component/CategoryList";
+import CategoryList from "./_components/CategoryList";
 
 const CategoryPage = () => {
   return (

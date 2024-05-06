@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Category } from "@prisma/client";
 
 import Link from "next/link";
-import DeleteAction from "@/app/(protected)/categories/_component/DeleteAction";
+import DeleteAction from "@/app/(protected)/categories/_components/DeleteAction";
 
 export type CategoryType = Category;
 

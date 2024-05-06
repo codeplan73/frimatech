@@ -1,6 +1,6 @@
 import BreadCumNav from "@/components/BreadCumNav";
 import React from "react";
-import NewForm from "../_component/ProductForm";
+import NewForm from "../_components/ProductForm";
 
 const NewPage = () => {
   return (

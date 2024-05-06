@@ -1,5 +1,5 @@
 import React from "react";
-import ProductList from "./_component/ProductList";
+import ProductList from "./_components/ProductList";
 import BreadCumNav from "@/components/BreadCumNav";
 
 const ProductsPage = async () => {

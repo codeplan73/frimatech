@@ -1,6 +1,6 @@
 import BreadCumNav from "@/components/BreadCumNav";
 import React from "react";
-import CategoryForm from "../_component/CategoryForm";
+import CategoryForm from "../_components/CategoryForm";
 
 const NewPage = () => {
   return (

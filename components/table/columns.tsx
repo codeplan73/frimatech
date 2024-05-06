@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Product } from "@prisma/client";
 
 import Link from "next/link";
-import DeleteAction from "@/app/(protected)/products/_component/DeleteAction";
+import DeleteAction from "@/app/(protected)/products/_components/DeleteAction";
 
 export type Payment = Product;
 
