@@ -99,7 +99,6 @@ export const CategorySchema = z.object({
 });
 
 export const BlogSchema = z.object({
-  id: z.string().optional(),
   title: z.string().min(8, { message: "Name is required" }),
   bodyText: z.string().min(15, { message: "label required" }),
   coverImage: z.string().optional(),

@@ -12,12 +12,14 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
   const { title, bodyText, coverImage } = validata.data;
 
+  console.log(validata.data, "data");
+
   try {
     const newBlog = await db.blog.create({
       data: {
         title,
         bodyText,
-        coverImage: coverImage || "",
+        coverImage: coverImage!,
       },
     });
 

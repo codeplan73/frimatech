@@ -10,12 +10,12 @@ interface CloudinaryResult {
 }
 
 interface ImageUploadProps {
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  setCoverImage: React.Dispatch<React.SetStateAction<string>>;
   setThumbNail: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
-  setImageUrl,
+  setCoverImage,
   setThumbNail,
 }) => {
   const [publicId, setPublicId] = useState("");
@@ -39,13 +39,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           multiple: false,
           maxFiles: 5,
           // showAdvancedOptions: true,
-          folder: "musa/blog",
+          folder: "musa-blog",
         }}
         onUpload={(result) => {
           if (result.event !== "success") return;
           const info = result.info as CloudinaryResult;
           setPublicId(info.public_id);
-          setImageUrl(info.secure_url); // Set the imageUrl using the public_id
+          setCoverImage(info.secure_url); // Set the imageUrl using the public_id
           setSecureUrl(info.secure_url); // Set the imageUrl using the public_id
           setThumbNail(info.thumbnail_url); // Set the imageUrl using the public_id
           setUrl(info.url); // Set the imageUrl using the public_id

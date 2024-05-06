@@ -17,10 +17,12 @@ import ImageUpload from "./../_components/ImageUpload";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import Image from "next/image";
+import { Blog } from "@prisma/client";
 
 export type BlogSchemaData = z.infer<typeof BlogSchema>;
+// export type BlogSchemaUpdate = z.infer<typeof Blog>;
 
-const BlogForm = ({ blog }: { blog?: BlogSchemaData }) => {
+const BlogForm = ({ blog }: { blog?: Blog }) => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, setSubmitting] = useState(false);
@@ -47,7 +49,7 @@ const BlogForm = ({ blog }: { blog?: BlogSchemaData }) => {
   const handleSubmitBlog = async (data: BlogSchemaData) => {
     const blogData = {
       ...data,
-      coverImage: setCoverImage,
+      coverImage: coverImage,
     };
 
     try {
@@ -119,7 +121,10 @@ const BlogForm = ({ blog }: { blog?: BlogSchemaData }) => {
             />
           )}
         </div>
-        <ImageUpload setThumbNail={setThumbNail} setImageUrl={setCoverImage} />
+        <ImageUpload
+          setThumbNail={setThumbNail}
+          setCoverImage={setCoverImage}
+        />
       </div>
 
       <InputFieldWrapper>
