@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import { z } from "zod";
 import Spinner from "@/components/Spinner";
@@ -10,11 +10,11 @@ import { IoIosSend } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { ProductSchema } from "@/schema";
+import { CategoryeSchema } from "@/schema";
 import InputField from "@/components/form-fields/InputField";
 import InputFieldWrapper from "@/components/form-fields/InputWrapper";
 
-export type ProductSchemaData = z.infer<typeof ProductSchema>;
+export type CategoryeSchemaData = z.infer<typeof CategoryeSchema>;
 
 const CategoryForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -28,18 +28,19 @@ const CategoryForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ProductSchemaData>({
-    resolver: zodResolver(ProductSchema),
+  } = useForm<CategoryeSchemaData>({
+    resolver: zodResolver(CategoryeSchema),
   });
 
-  const handleRegister = async (data: ProductSchemaData) => {
+  const handleRegister = async (data: CategoryeSchemaData) => {
     try {
       setSubmitting(true);
 
       const response = await axios.post("/api/category", data);
       toast.success(response.data.message);
       router.refresh();
-      router.push("/products");
+      reset();
+      router.push("/categories");
       setSubmitting(false);
     } catch (error) {
       console.log(error);

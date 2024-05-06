@@ -63,12 +63,14 @@ const ProductForm = ({ product }: { product?: ProductUpdateSchemaData }) => {
         );
         toast.success(response.data.message);
         router.refresh();
+        reset();
         router.push("/products");
         setSubmitting(false);
       } else {
         const response = await axios.post("/api/products", productData);
         toast.success(response.data.message);
         router.refresh();
+        reset();
         router.push("/products");
         setSubmitting(false);
       }

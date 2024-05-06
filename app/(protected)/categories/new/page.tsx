@@ -1,6 +1,6 @@
 import BreadCumNav from "@/components/BreadCumNav";
 import React from "react";
-import NewForm from "../_component/CategoryForm";
+import CategoryForm from "../_component/CategoryForm";
 
 const NewPage = () => {
   return (
@@ -11,7 +11,7 @@ const NewPage = () => {
         currentSection="Add New Category"
       />
       <div>
-        <NewForm />
+        <CategoryForm />
       </div>
     </div>
   );

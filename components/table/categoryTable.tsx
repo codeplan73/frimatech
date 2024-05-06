@@ -71,7 +71,7 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         />
         <Link
-          href={"/category/new"}
+          href={"/categories/new"}
           className="flex items-center space-x-2 shadow-md p-3  rounded-md bg-textPrimary text-bgPrimary"
         >
           <FaPlus className="" />{" "}
