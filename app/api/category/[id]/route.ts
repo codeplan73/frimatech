@@ -10,14 +10,14 @@ export async function DELETE(
   });
 
   if (!category)
-    return NextResponse.json({ error: "Invalid product Id" }, { status: 404 });
+    return NextResponse.json({ error: "Invalid category Id" }, { status: 404 });
 
   await db.category.delete({
     where: { id: category.id },
   });
 
   return NextResponse.json({
-    message: "Product deleted successfully",
+    message: "Category deleted successfully",
     status: 200,
   });
 }
