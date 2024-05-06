@@ -10,7 +10,7 @@ import { IoIosSend } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { BLogSchema } from "@/schema";
+import { BlogSchema } from "@/schema";
 import InputField from "@/components/form-fields/InputField";
 import InputFieldWrapper from "@/components/form-fields/InputWrapper";
 import ImageUpload from "./../_components/ImageUpload";
@@ -18,7 +18,7 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import Image from "next/image";
 
-export type BlogSchemaData = z.infer<typeof BLogSchema>;
+export type BlogSchemaData = z.infer<typeof BlogSchema>;
 
 const BlogForm = ({ blog }: { blog?: BlogSchemaData }) => {
   const [error, setError] = useState<string | undefined>("");
@@ -35,7 +35,7 @@ const BlogForm = ({ blog }: { blog?: BlogSchemaData }) => {
     reset,
     formState: { errors },
   } = useForm<BlogSchemaData>({
-    resolver: zodResolver(BLogSchema),
+    resolver: zodResolver(BlogSchema),
   });
 
   useEffect(() => {
@@ -94,9 +94,9 @@ const BlogForm = ({ blog }: { blog?: BlogSchemaData }) => {
       <InputFieldWrapper>
         <Controller
           disabled={isPending}
-          name="body"
+          name="bodyText"
           control={control}
-          defaultValue={blog?.body}
+          defaultValue={blog?.bodyText}
           render={({ field }) => (
             <SimpleMDE
               className="w-full"

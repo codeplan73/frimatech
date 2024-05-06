@@ -98,10 +98,10 @@ export const CategorySchema = z.object({
   label: z.string().min(1, { message: "label required" }),
 });
 
-export const BLogSchema = z.object({
+export const BlogSchema = z.object({
   id: z.string().optional(),
-  title: z.string().min(1, { message: "Name is required" }),
-  body: z.string().min(1, { message: "label required" }),
+  title: z.string().min(8, { message: "Name is required" }),
+  bodyText: z.string().min(15, { message: "label required" }),
   coverImage: z.string().optional(),
 });
 

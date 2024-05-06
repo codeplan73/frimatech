@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Blog } from "@prisma/client";
 
 import Link from "next/link";
-import DeleteAction from "@/app/(protected)/products/_components/DeleteAction";
+import DeleteAction from "@/app/(protected)/blog/_components/DeleteAction";
 
 export type BlogType = Blog;
 
