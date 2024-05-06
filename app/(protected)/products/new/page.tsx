@@ -1,14 +1,14 @@
 import BreadCumNav from "@/components/BreadCumNav";
 import React from "react";
-import NewForm from "../_component/NewForm";
+import NewForm from "../_component/ProductForm";
 
 const NewPage = () => {
   return (
     <div className="">
       <BreadCumNav
         dashboard="dashboard"
-        currentPage="users"
-        currentSection="Add New User"
+        currentPage="products"
+        currentSection="Add New Product"
       />
       <div>
         <NewForm />

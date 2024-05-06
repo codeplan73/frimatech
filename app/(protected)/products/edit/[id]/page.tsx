@@ -1,5 +1,7 @@
 import React from "react";
 import { db } from "@/lib/db";
+import BreadCumNav from "@/components/BreadCumNav";
+import ProductForm from "../../_component/ProductForm";
 
 interface Props {
   params: { id: string };
@@ -10,9 +12,18 @@ const EditProductPage = async ({ params }: Props) => {
     where: { id: params.id },
   });
 
+  if (!product) {
+    return null; // or any other fallback behavior
+  }
+
   return (
     <div>
-      <h4>{product?.productName}</h4>
+      <BreadCumNav
+        dashboard="dashboard"
+        currentPage="products"
+        currentSection={`Edit ${product.productName}`}
+      />
+      <ProductForm product={product} />
     </div>
   );
 };

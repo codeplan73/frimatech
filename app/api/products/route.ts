@@ -14,16 +14,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
   const { productName, description, price, quantity, category, imageUrl } =
     validata.data;
 
-  const priceNumber = Number(price);
-  const quantityNumber = Number(quantity);
-
   try {
     const newProduct = await db.product.create({
       data: {
         productName,
         description,
-        quantity: quantityNumber,
-        price: priceNumber,
+        quantity,
+        price,
         category,
         imageUrl: imageUrl!,
       },

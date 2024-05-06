@@ -1,22 +1,13 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal, ArrowUpDown } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { Product } from "@prisma/client";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-// export type Payment = Booking;
+import DeleteAction from "@/app/(protected)/products/_component/DeleteAction";
 
 export type Payment = Product;
 
@@ -77,29 +68,15 @@ export const columns: ColumnDef<Payment>[] = [
       const product = row.original;
 
       return (
-        <>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link href={`/products/edit/${product.id}`}>Edit Product</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href={`/product/delete/${product.id}`}>
-                  Delete Product
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </>
+        <div className="space-x-2">
+          <Link
+            className="border border-bgPrimary text-bgPrimary rounded-md p-2"
+            href={`/products/edit/${product.id}`}
+          >
+            Edit
+          </Link>
+          <DeleteAction id={product.id} />
+        </div>
       );
     },
   },

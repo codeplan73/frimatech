@@ -1,28 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { z } from "zod";
-import Spinner from "@/components/spinner";
+import Spinner from "@/components/Spinner";
 import { IoIosSend } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { ProductSchema } from "@/schema";
+import { ProductSchema, ProductUpdateSchema } from "@/schema";
 import InputField from "@/components/form-fields/InputField";
-import InputTextArea from "@/components/form-fields/InputTextArea";
 import InputFieldWrapper from "@/components/form-fields/InputWrapper";
 import SelectField from "@/components/form-fields/SelectField";
 import ImageUpload from "@/app/(protected)/_components/ImageUpload";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
+import Image from "next/image";
 
 export type ProductSchemaData = z.infer<typeof ProductSchema>;
+export type ProductUpdateSchemaData = z.infer<typeof ProductUpdateSchema>;
 
-// const IssueForm = ({ issue }: { issue?: Issue }) => {
-const NewForm = () => {
+const ProductForm = ({ product }: { product?: ProductUpdateSchemaData }) => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, setSubmitting] = useState(false);
@@ -42,6 +42,12 @@ const NewForm = () => {
     resolver: zodResolver(ProductSchema),
   });
 
+  useEffect(() => {
+    if (product?.imageUrl) {
+      setImageUrl(product.imageUrl);
+    }
+  }, [product]);
+
   const handleRegister = async (data: ProductSchemaData) => {
     const productData = {
       ...data,
@@ -50,18 +56,25 @@ const NewForm = () => {
 
     try {
       setSubmitting(true);
-      const response = await axios.post("/api/products", productData);
-      if (response.status === 200) {
+      if (product) {
+        const response = await axios.patch(
+          "/api/products/" + product.id,
+          productData
+        );
         toast.success(response.data.message);
         router.refresh();
         router.push("/products");
         setSubmitting(false);
       } else {
-        toast.error(response.data.message);
+        const response = await axios.post("/api/products", productData);
+        toast.success(response.data.message);
+        router.refresh();
+        router.push("/products");
         setSubmitting(false);
       }
     } catch (error) {
       console.log(error);
+      setError("An unexpected error occurred.");
     }
   };
 
@@ -78,6 +91,7 @@ const NewForm = () => {
           type="text"
           errors={errors}
           name="productName"
+          value={product?.productName}
           disabled={isPending}
         />
         <SelectField
@@ -105,6 +119,7 @@ const NewForm = () => {
           type="number"
           errors={errors}
           name="price"
+          value={product?.price}
           disabled={isPending}
         />
         <InputField
@@ -115,6 +130,7 @@ const NewForm = () => {
           errors={errors}
           name="quantity"
           disabled={isPending}
+          value={product?.quantity}
         />
       </InputFieldWrapper>
 
@@ -123,7 +139,7 @@ const NewForm = () => {
           disabled={isPending}
           name="description"
           control={control}
-          // defaultValue={product?.longDescription}
+          defaultValue={product?.description}
           render={({ field }) => (
             <SimpleMDE
               className="w-full"
@@ -134,32 +150,20 @@ const NewForm = () => {
         />
       </InputFieldWrapper>
 
-      <InputFieldWrapper>
+      <div className="w-full flex flex-col md:flex-row items-start space-y-6 md:space-y-0 md:space-x-6">
         <div>
-          {/* <Input
-            type="file"
-            className=""
-            multiple
-            {...register("imageUrl")}
-            required
-          /> */}
+          {product && (
+            <Image
+              src={product?.imageUrl ?? ""}
+              alt={product.productName}
+              height={200}
+              width={200}
+              className=""
+            />
+          )}
         </div>
-        {/* <InputFieldWrapper>
-        {product && (
-          <Image
-            src={product?.imageUrl}
-            alt={product.name}
-            height={200}
-            width={200}
-            className=""
-          />
-        )}
-      </InputFieldWrapper> */}
-        {/* <ImageUpload setImageUrl={setImageUrl} /> */}
         <ImageUpload setThumbNail={setThumbNail} setImageUrl={setImageUrl} />
-        {/* <ImageUpload setImageUrl={setImageUrl} />
-        <ImageUpload imageUrl={imageUrl} setImageUrl={setImageUrl} /> */}
-      </InputFieldWrapper>
+      </div>
 
       <InputFieldWrapper>
         <Button
@@ -169,11 +173,15 @@ const NewForm = () => {
         >
           {isPending && <Spinner />}
           <IoIosSend className="text-md" />
-          <span className="ml-1"> Submit</span>
+          <span className="ml-1">
+            {product ? "Update Product" : "Add Product"}
+          </span>
         </Button>
       </InputFieldWrapper>
     </form>
   );
 };
 
-export default NewForm;
+export const revalidate = 1;
+
+export default ProductForm;
