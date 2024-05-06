@@ -92,3 +92,8 @@ export const ProductUpdateSchema = z.object({
   quantity: z.string().min(1, { message: "Quantity required" }),
   // imageUrl: z.array(z.string().url()).min(1, { message: "Image is required" }),
 });
+
+export const CategoryeSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  label: z.string().min(1, { message: "label required" }),
+});
