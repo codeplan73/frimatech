@@ -3,7 +3,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Product } from "@prisma/client";
+import { Checkbox } from "@/components/ui/checkbox";
+import { User } from "@prisma/client";
 
 import {
   DropdownMenu,
@@ -15,48 +16,40 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 
-type Payment = Product;
+type UserType = User;
 
-export const newTaskColumns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<UserType>[] = [
   {
-    accessorKey: "fullname",
-    header: "Client Name",
+    accessorKey: "name",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
-    accessorKey: "postcode",
-    header: "Postal Code",
+    accessorKey: "email",
+    header: "Email",
   },
   {
     accessorKey: "phone_number",
     header: "Phone Number",
   },
-
   {
-    accessorKey: "clean_type",
-    header: "Task Type",
-  },
-  {
-    accessorKey: "booking_date",
-    header: "Date",
-  },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-uk", {
-        style: "currency",
-        currency: "GBP",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
+    accessorKey: "city",
+    header: "City",
   },
 
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const user = row.original;
 
       return (
         <DropdownMenu>
@@ -71,10 +64,7 @@ export const newTaskColumns: ColumnDef<Payment>[] = [
 
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link href={`/bookings/${payment.id}`}>View Details</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="text-red-500">
-              Delete Booking
+              <Link href={`/users/${user.id}`}>View Client Details</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

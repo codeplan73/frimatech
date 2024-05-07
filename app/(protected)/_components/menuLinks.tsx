@@ -62,8 +62,8 @@ export const menuLinks = [
   },
   {
     id: 5,
-    label: "Clients",
-    link: "/clients",
+    label: "Users",
+    link: "/users",
     icon: <PiUsersThreeLight />,
   },
   {

@@ -42,7 +42,6 @@ const PasswordPage = () => {
 
   const handlePasswordUpdate = async (data: userPasswordData) => {
     const formData = { ...data, id };
-    console.log(formData);
     try {
       setSubmitting(true);
       const response = await axios.patch(`/api/users/password/${id}`, formData);

@@ -11,8 +11,6 @@ export async function PATCH(
 
   const validata = PasswordSchema.safeParse(body);
 
-  console.log(validata);
-
   if (!validata.success)
     return NextResponse.json(validata.error.format(), { status: 400 });
 
