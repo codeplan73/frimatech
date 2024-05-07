@@ -55,18 +55,18 @@ const CategoryForm = () => {
     >
       <InputFieldWrapper>
         <InputField
-          label="Price"
+          label="Name"
           register={register}
-          placeholder="Enter Category Name"
+          placeholder="Enter Category Name in small letters"
           type="text"
           errors={errors}
           name="name"
           disabled={isPending}
         />
         <InputField
-          label="Quantity"
+          label="Label"
           register={register}
-          placeholder="Enter Category Label"
+          placeholder="Enter Category Label "
           type="text"
           errors={errors}
           name="label"

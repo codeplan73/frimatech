@@ -72,6 +72,13 @@ const Navbar = () => {
           open ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
+        <Image
+          src="/images/logo.jpeg"
+          alt="logo"
+          height={100}
+          width={100}
+          className="rounded-full w-full p-2 my-4"
+        />
         {open &&
           menuLinks.map((link) => (
             <Link

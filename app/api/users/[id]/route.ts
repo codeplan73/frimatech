@@ -40,6 +40,8 @@ export async function PATCH(
       address,
       city,
       state,
+      // email: "user@gmail.com",
+      // role: "CLIENT",
     },
   });
 
