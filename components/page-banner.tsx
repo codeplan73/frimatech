@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 interface Props {
-  title: string;
+  title: any;
   link: string;
   currentPage: string;
   style: React.CSSProperties;

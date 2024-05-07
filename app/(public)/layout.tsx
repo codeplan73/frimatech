@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "../globals.css";
-
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
-
 import "react-toastify/dist/ReactToastify.css";
+
 import { ToastContainer } from "react-toastify";
+import QueryClientProvider from "./QueryClientProvider";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -34,20 +34,22 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <SessionProvider session={session}>
-      <html lang="en">
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
-          <Navbar />
-          <main className="mt-0">{children}</main>
-          <Footer />
-          <ToastContainer />
-        </body>
-      </html>
-    </SessionProvider>
+    <QueryClientProvider>
+      <SessionProvider session={session}>
+        <html lang="en">
+          <body
+            className={cn(
+              "min-h-screen bg-background font-sans antialiased",
+              fontSans.variable
+            )}
+          >
+            <Navbar />
+            <main className="mt-0">{children}</main>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </html>
+      </SessionProvider>
+    </QueryClientProvider>
   );
 }

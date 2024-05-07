@@ -1,112 +1,25 @@
 import Banner from "@/components/page-banner";
 import React from "react";
+import ProductList from "./_components/ProductList";
 
 const ShopPage = () => {
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col">
       <Banner
         currentPage="Shop"
         title="Shop Page"
         link="/"
         style={{ backgroundImage: "url('/img/shop.png')" }}
       />
-      <h4 className="text-4xl">SHop Page</h4>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolorum,
-        totam dignissimos rerum, vitae quia, quod praesentium velit modi
-        sapiente reiciendis quasi deserunt aliquam aliquid placeat ab.
-        Voluptates eos eius reiciendis tempora optio pariatur, possimus mollitia
-        et quam consequuntur atque dignissimos iusto molestias magnam ex velit
-        qui debitis vitae doloribus!
-      </p>
+
+      <div className="mx-auto w-full px-6 md:px-32 space-y-8 py-12 bg-slate-100">
+        <h4 className="container text-3xl md:text-4xl font-bold text-bgPrimary">
+          Explore Our recommendations
+        </h4>
+        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-6 p-4 py-4">
+          <ProductList />
+        </div>
+      </div>
     </div>
   );
 };

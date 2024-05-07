@@ -12,7 +12,7 @@ export const clientLink = [
   {
     id: 1,
     label: "Dashboard",
-    link: "/dasboards",
+    link: "/dashboard",
     icon: <LuLayoutDashboard />,
   },
   {

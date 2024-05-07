@@ -3,6 +3,11 @@ import Cloudinary from "@/config/cloudinary";
 import { ProductSchema } from "@/schema";
 import { db } from "@/lib/db";
 
+export async function GET(request: NextRequest, response: NextResponse) {
+  const products = await db.product.findMany();
+  return NextResponse.json({ data: products, status: 200 });
+}
+
 export async function POST(request: NextRequest, response: NextResponse) {
   const body = await request.json();
 

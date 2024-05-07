@@ -77,7 +77,7 @@ model User {
 model Product {
   id          String   @id @default(cuid())
   productName String
-  description String
+  description String   @db.Text
   price       String
   imageUrl    String
   category    String
