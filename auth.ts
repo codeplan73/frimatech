@@ -47,6 +47,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       token.name = existingUser.name;
       token.email = existingUser.email;
+      token.phone_number = existingUser.phone_number;
+      token.address = existingUser.address;
+      token.city = existingUser.city;
+      token.state = existingUser.state;
+      token.gender = existingUser.gender;
       token.role = existingUser.role;
 
       return token;

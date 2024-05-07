@@ -15,7 +15,7 @@ interface Props {
 
 const BreadCumNav = ({ dashboard, currentPage, currentSection }: Props) => {
   return (
-    <Breadcrumb className="w-full bg-white p-4 rounded-lg my-6">
+    <Breadcrumb className="w-full bg-white p-4 rounded-lg my-2">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/dashboard">{dashboard}</BreadcrumbLink>

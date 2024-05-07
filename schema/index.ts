@@ -109,3 +109,12 @@ export const CommentSchema = z.object({
   comment: z.string().min(1, { message: "comment required" }),
   blogId: z.string().min(1, { message: "id required" }),
 });
+
+export const UserSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  phone_number: z.string().min(1, { message: "Phone Number is required" }),
+  gender: z.string().min(1, { message: "gender is required" }),
+  address: z.string().min(1, { message: "address is required" }),
+  city: z.string().min(1, { message: "city is required" }),
+  state: z.string().min(1, { message: "stat is required" }),
+});
