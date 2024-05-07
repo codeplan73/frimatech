@@ -13,51 +13,6 @@ const links = [
     href: "/settings/password",
     description: "Change Password",
   },
-  {
-    label: "Notification Settings",
-    href: "/settings/notification",
-    description: "Manage your notification settings",
-  },
-  {
-    label: "Billing Settings",
-    href: "/settings/billing",
-    description: "Manage your billing settings",
-  },
-  {
-    label: "Subscription Settings",
-    href: "/settings/subscription",
-    description: "Manage your subscription settings",
-  },
-  {
-    label: "Security Settings",
-    href: "/settings/security",
-    description: "Manage your security settings",
-  },
-  {
-    label: "Privacy Settings",
-    href: "/settings/privacy",
-    description: "Manage your privacy settings",
-  },
-  {
-    label: "Support Settings",
-    href: "/settings/support",
-    description: "Manage your support settings",
-  },
-  {
-    label: "Help Settings",
-    href: "/settings/help",
-    description: "Manage your help settings",
-  },
-  {
-    label: "Feedback Settings",
-    href: "/settings/feedback",
-    description: "Manage your feedback settings",
-  },
-  {
-    label: "Logout",
-    href: "/settings/logout",
-    description: "Logout from your account",
-  },
 ];
 
 const SettingLink = () => {

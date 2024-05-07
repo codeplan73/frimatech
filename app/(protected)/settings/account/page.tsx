@@ -16,17 +16,17 @@ import InputControlled from "@/components/form-fields/inputControlled";
 import { useSession } from "next-auth/react";
 import InputWrapper from "@/components/form-fields/InputWrapper";
 import { IoIosSend } from "react-icons/io";
+import LoadingPage from "./loading";
 
 export type userFormData = z.infer<typeof UserSchema>;
 
-const PricePage = () => {
+const AccountSettingsPage = () => {
   const [userData, setUserData] = useState<userFormData | null>(null);
   const router = useRouter();
   const [isPending, setSubmitting] = useState(false);
-  const session = useSession();
 
+  const session = useSession();
   const id = session.data?.user.id;
-  const user = session.data?.user;
 
   useEffect(() => {
     async function getUserData() {
@@ -50,7 +50,6 @@ const PricePage = () => {
     try {
       setSubmitting(true);
       const response = await axios.patch(`/api/users/${id}`, formData);
-      console.log(response);
       toast.success(response.data.message);
       router.push("/settings");
       setSubmitting(false);
@@ -60,7 +59,7 @@ const PricePage = () => {
   };
 
   if (!userData) {
-    return <Spinner />;
+    return LoadingPage();
   }
 
   return (
@@ -197,4 +196,4 @@ const PricePage = () => {
   );
 };
 
-export default PricePage;
+export default AccountSettingsPage;

@@ -118,3 +118,17 @@ export const UserSchema = z.object({
   city: z.string().min(1, { message: "city is required" }),
   state: z.string().min(1, { message: "stat is required" }),
 });
+
+export const PasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(6, { message: "New password must be at least 6 character" }),
+    confirm_password: z
+      .string()
+      .min(6, { message: "Password confirmation is required" }),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "New password and confirmation doesn't match!",
+    path: ["confirm_password"],
+  });
