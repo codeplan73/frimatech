@@ -23,28 +23,28 @@ const Home = () => {
         <div className="container grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 p-4 py-4">
           <ProductCardGrid
             image="/images/watch.png"
-            price={1400}
+            price="1400"
             name="Nokix Digital Camera"
             rating="7.5"
             link={`/items`}
           />
           <ProductCardGrid
             image="/images/headset.png"
-            price={5000}
+            price="5000"
             name="Headset Pro"
             rating="7.5"
             link={`/items`}
           />
           <ProductCardGrid
             image="/images/laptop.png"
-            price={5000}
+            price="5000"
             name="Macbook Pro 2020"
             rating="7.5"
             link={`/items`}
           />
           <ProductCardGrid
             image="/images/iphone-14-pro-max.jpeg"
-            price={5000}
+            price="5000"
             name="Iphone 14 Pro Max"
             rating="7.5"
             link={`/items`}

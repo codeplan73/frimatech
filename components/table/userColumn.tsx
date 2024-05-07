@@ -18,7 +18,7 @@ import Link from "next/link";
 
 type UserType = User;
 
-export const columns: ColumnDef<UserType>[] = [
+export const userColumn: ColumnDef<UserType>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
