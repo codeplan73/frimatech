@@ -12,6 +12,8 @@ export const publicRoutes = [
   "/cart",
   "/blog",
   "/terms",
+  "/shop/:id",
+  "/paystack",
 ];
 
 /**

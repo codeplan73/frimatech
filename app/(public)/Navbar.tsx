@@ -28,7 +28,7 @@ const links = [
 ];
 
 const linksAuth = [
-  { label: "Cart", href: "/Cart" },
+  { label: "Cart", href: "/cart" },
   { label: "SignIn", href: "/auth/login" },
 ];
 
@@ -70,17 +70,25 @@ const Navbar = () => {
             : "bg-transparent border-none"
         }`}
       >
-        <div className="mx-auto px-4  py-4 flex items-center justify-between text-white">
+        <div className="flex items-center justify-between px-4 py-4 mx-auto text-white">
           <Link href="/" className="">
-            <Image
-              src="/images/logo.jpeg"
+            {/* <Image
+              src="/logo.png"
               alt="Shop Logo"
               height={1000}
               width={1000}
-              className="h-full w-24 rounded drop-shadow-2xl"
+              className="w-24 h-full rounded drop-shadow-2xl text-bgPrimary"
+            /> */}
+            <Image
+              src="/logo.png"
+              alt="Shop Logo"
+              height={1000}
+              width={1000}
+              className="w-24 h-full rounded drop-shadow-2xl filter hue-rotate-90"
             />
           </Link>
-          <ul className="hidden md:flex items-center justify-start space-x-2">
+
+          <ul className="items-center justify-start hidden space-x-2 md:flex">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -97,7 +105,7 @@ const Navbar = () => {
               </Link>
             ))}
           </ul>
-          <ul className="hidden md:flex items-center justify-start space-x-2">
+          <ul className="items-center justify-start hidden space-x-2 md:flex">
             {linksAuth.map((link) => (
               <Link
                 key={link.href}
@@ -119,7 +127,7 @@ const Navbar = () => {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="outline"
-                    className="text-slate-900 bg-transparent border-0 hover:bg-slate-900 hover:text-white"
+                    className="bg-transparent border-0 text-slate-900 hover:bg-slate-900 hover:text-white"
                   >
                     Profile
                   </Button>
@@ -142,12 +150,12 @@ const Navbar = () => {
 
           {open ? (
             <CgMenuMotion
-              className="block md:hidden text-slate-300 text-3xl font-semibold cursor-pointer h-full"
+              className="block h-full text-3xl font-semibold cursor-pointer md:hidden text-slate-300"
               onClick={() => setIsOpen(!open)}
             />
           ) : (
             <TiThMenu
-              className="block md:hidden text-slate-300 text-3xl cursor-pointer h-full"
+              className="block h-full text-3xl cursor-pointer md:hidden text-slate-300"
               onClick={() => setIsOpen(!open)}
             />
           )}
@@ -158,7 +166,7 @@ const Navbar = () => {
       {/* Overlay */}
       {open && (
         <div
-          className="fixed inset-0 bg-black opacity-70 z-10"
+          className="fixed inset-0 z-10 bg-black opacity-70"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
@@ -174,7 +182,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex p-4 text-slate-700 w-full hover:bg-secondaryColor hover:text-white"
+                className="flex w-full p-4 text-slate-700 hover:bg-secondaryColor hover:text-white"
                 onClick={() => setIsOpen(false)}
               >
                 <span>{link.label}</span>
@@ -184,7 +192,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex p-4 text-slate-700 w-full hover:bg-secondaryColor hover:text-white"
+                className="flex w-full p-4 text-slate-700 hover:bg-secondaryColor hover:text-white"
                 onClick={() => setIsOpen(false)}
               >
                 <span>{link.label}</span>
