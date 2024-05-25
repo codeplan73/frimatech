@@ -80,8 +80,8 @@ export const ProductSchema = z.object({
   imageUrl: z.string().optional(),
   category: z.string().min(1, { message: "category required" }),
   quantity: z.string().min(1, { message: "Quantity required" }),
-  // imageUrl: z.array(z.string().url()).min(1, { message: "Image is required" }),
 });
+
 export const ProductUpdateSchema = z.object({
   id: z.string(),
   productName: z.string().min(1, { message: "Name is required" }),
@@ -90,7 +90,6 @@ export const ProductUpdateSchema = z.object({
   imageUrl: z.string().optional(),
   category: z.string().min(1, { message: "category required" }),
   quantity: z.string().min(1, { message: "Quantity required" }),
-  // imageUrl: z.array(z.string().url()).min(1, { message: "Image is required" }),
 });
 
 export const CategorySchema = z.object({

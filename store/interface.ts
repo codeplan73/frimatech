@@ -3,7 +3,7 @@ interface Product {
   productName: string;
   description: string;
   price: string;
-  quantity: number;
+  quantity: string;
   imageUrl: string;
   category: string;
   createdAt: Date;

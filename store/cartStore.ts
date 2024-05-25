@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export interface CartState {
-  products: Array<Product & { quantity: number }>;
+  products: Array<Product & { quantity: string }>;
   addToCart: (product: Product) => void;
   reduceFromCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
@@ -18,14 +18,14 @@ const useCartStore = create<CartState>((set, get) => ({
       const products = state.products.map((p) => {
         if (p.id === product.id) {
           hasProduct = true;
-          return { ...p, quantity: p.quantity + 1 };
+          return { ...p, quantity: (parseInt(p.quantity) + 1).toString() };
         }
         return p;
       });
 
       const updatedProducts = hasProduct
         ? products
-        : [...state.products, { ...product, quantity: 1 }];
+        : [...state.products, { ...product, quantity: "1" }];
       localStorage.setItem("cart", JSON.stringify(updatedProducts));
       return { products: updatedProducts };
     }),
@@ -35,11 +35,11 @@ const useCartStore = create<CartState>((set, get) => ({
       const updatedProducts = state.products
         .map((p) => {
           if (p.id === product.id) {
-            return { ...p, quantity: p.quantity - 1 };
+            return { ...p, quantity: (parseInt(p.quantity) - 1).toString() };
           }
           return p;
         })
-        .filter((p) => p.quantity > 0);
+        .filter((p) => parseInt(p.quantity) > 0);
       localStorage.setItem("cart", JSON.stringify(updatedProducts));
       return { products: updatedProducts };
     }),
@@ -57,11 +57,14 @@ const useCartStore = create<CartState>((set, get) => ({
       return { products: [] };
     }),
 
-  items: () => get().products.reduce((acc, p) => acc + p.quantity, 0),
+  items: () => get().products.reduce((acc, p) => acc + parseInt(p.quantity), 0),
 
   total: () =>
     get()
-      .products.reduce((acc, p) => acc + parseFloat(p.price) * p.quantity, 0)
+      .products.reduce(
+        (acc, p) => acc + parseFloat(p.price) * parseInt(p.quantity),
+        0
+      )
       .toFixed(2),
 }));
 
