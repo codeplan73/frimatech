@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
-import { Product } from "@prisma/client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ReactMarkdown from "react-markdown";
+import useCartStore from "@/store/cartStore";
+import { Product } from "@prisma/client";
+import { toast } from "react-toastify";
 
 const ProductDatails = ({ product }: { product: Product }) => {
+  const { removeFromCart, addToCart, items } = useCartStore();
+
   const price = parseFloat(product.price);
   const formattedPrice = new Intl.NumberFormat("en-ng", {
     style: "currency",
@@ -38,7 +42,13 @@ const ProductDatails = ({ product }: { product: Product }) => {
           </div>
 
           <div className="space-x-4 space-y-4">
-            <Button className="text-textPrimary bg-bgPrimary hover:text-white">
+            <Button
+              onClick={() => {
+                addToCart(product);
+                toast.success("Item Added to Cart");
+              }}
+              className="text-textPrimary bg-bgPrimary hover:text-white"
+            >
               Add to Cart
             </Button>
           </div>

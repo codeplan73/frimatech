@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PaystackButton } from "react-paystack";
 
 const PaymentPage = () => {
-  const publicKey = process.env.PAYSTACK_PUBLIC_KEY;
+  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
   const amount = 1000000;
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ const PaymentPage = () => {
     reference: new Date().getTime().toString(),
     email: "superadmin@gmail.com",
     amount: 2000 * 100,
-    publicKey: "pk_test_6fc53b466579d09e761700f2c59b75913fbeba8a",
+    publicKey,
     metadata: {
       custom_fields: [
         {

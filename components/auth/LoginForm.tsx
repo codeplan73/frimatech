@@ -45,7 +45,6 @@ const RegisterForm = () => {
     try {
       setSubmitting(true);
       await axios.post("/api/auth/login", data);
-      toast.success("Account Created successfully!");
       router.refresh();
       router.push("/auth/login");
       setSubmitting(false);

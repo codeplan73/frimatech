@@ -18,6 +18,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { BsCart4 } from "react-icons/bs";
+import useCartStore from "@/store/cartStore";
 
 const links = [
   { label: "Home", href: "/" },
@@ -39,6 +41,8 @@ const Navbar = () => {
   const [position, setPosition] = useState("bottom");
   const auth = false;
   const session = useSession();
+
+  const { items } = useCartStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,13 +76,6 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between px-4 py-4 mx-auto text-white">
           <Link href="/" className="">
-            {/* <Image
-              src="/logo.png"
-              alt="Shop Logo"
-              height={1000}
-              width={1000}
-              className="w-24 h-full rounded drop-shadow-2xl text-bgPrimary"
-            /> */}
             <Image
               src="/logo.png"
               alt="Shop Logo"
@@ -106,21 +103,34 @@ const Navbar = () => {
             ))}
           </ul>
           <ul className="items-center justify-start hidden space-x-2 md:flex">
-            {linksAuth.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={classnames({
-                  "text-white p-2 rounded-xl font-semibold":
-                    link.href === currentPath,
-                  "text-textPrimary": link.href !== currentPath,
-                  "text-white": isScrolled,
-                  "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
-                })}
-              >
-                {link.label}
-              </Link>
-            ))}
+            <Link
+              href="/cart"
+              className={classnames({
+                "text-white p-2 rounded-xl font-semibold":
+                  "/cart" === currentPath,
+                "text-textPrimary": "/cart" !== currentPath,
+                "text-white": isScrolled,
+                "flex items-start gap-1 transition-colors hover:text-[#dbc547] p-2 rounded-xl":
+                  true,
+              })}
+            >
+              <BsCart4 className="z-10 text-xl" />
+              <span className="flex flex-col text- font-semibold">
+                {items()}
+              </span>
+            </Link>
+            <Link
+              href="/login"
+              className={classnames({
+                "text-white p-2 rounded-xl font-semibold":
+                  "/login" === currentPath,
+                "text-textPrimary": "/login" !== currentPath,
+                "text-white": isScrolled,
+                "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
+              })}
+            >
+              Login
+            </Link>
 
             {auth && (
               <DropdownMenu>

@@ -24,7 +24,7 @@ const Banner = ({ title, currentPage, style, link }: Props) => {
           className="text-lg font-semibold text-center text-textPrimary"
           href={link}
         >
-          Homepage / {currentPage}
+          {currentPage}
         </Link>
       </div>
     </div>
