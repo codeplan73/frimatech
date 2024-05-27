@@ -30,13 +30,15 @@ const Sidebar = () => {
 
   return (
     <aside className="bg-textPrimary hidden h-full md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 px-4 py-6 gap-6 shadow-lg z-10 ">
-      <Image
-        src="/images/logo.jpeg"
-        alt="logo"
-        height={100}
-        width={100}
-        className="rounded-full"
-      />
+      <Link href="/">
+        <Image
+          src="/images/logo.jpeg"
+          alt="logo"
+          height={100}
+          width={100}
+          className="rounded-full"
+        />
+      </Link>
       <div className="flex flex-col justify-start h-full space-y-5">
         {/* {session.data?.user.role === "ADMIN" && ( */}
         <ul className="flex flex-col space-y-5">

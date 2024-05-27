@@ -1,5 +1,11 @@
 import React from "react";
+import { auth } from "@/auth";
+import UserOrder from "../_components/UserOrder";
+
 const DashBoardPage = async () => {
+  const session = await auth();
+
+  if (session?.user.role !== "ADMIN") return <UserOrder />;
   return (
     <div>
       <h3>Admin Section</h3>

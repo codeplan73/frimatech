@@ -9,12 +9,12 @@ import { GrBlog } from "react-icons/gr";
 import { FcProcess } from "react-icons/fc";
 
 export const clientLink = [
-  {
-    id: 1,
-    label: "Dashboard",
-    link: "/dashboard",
-    icon: <LuLayoutDashboard />,
-  },
+  // {
+  //   id: 1,
+  //   label: "Dashboard",
+  //   link: "/dashboard",
+  //   icon: <LuLayoutDashboard />,
+  // },
   {
     id: 2,
     label: "My Orders",

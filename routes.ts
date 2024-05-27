@@ -12,7 +12,9 @@ export const publicRoutes = [
   "/cart",
   "/blog",
   "/terms",
-  "/shop/:id",
+  "/shop/*",
+  "/api/products",
+  "/api/products/:id",
   "/paystack",
 ];
 

@@ -41,7 +41,7 @@ const PaymentPage = () => {
 
   const componentProps = {
     ...config,
-    text: "Paystacks",
+    text: "Checkout",
     onSuccess: (reference: any) => handlePaystackSuccessAction(reference),
     onClose: handlePaystackCloseAction,
   };
@@ -81,6 +81,7 @@ const PaymentPage = () => {
         </div>
       </div>
       <PaystackButton
+        className="bg-blue-500 rounded-md text-white p-4 py-2"
         {...componentProps}
         publicKey={componentProps.publicKey ?? ""}
       />

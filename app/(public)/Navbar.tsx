@@ -119,27 +119,14 @@ const Navbar = () => {
                 {items()}
               </span>
             </Link>
-            <Link
-              href="/login"
-              className={classnames({
-                "text-white p-2 rounded-xl font-semibold":
-                  "/login" === currentPath,
-                "text-textPrimary": "/login" !== currentPath,
-                "text-white": isScrolled,
-                "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
-              })}
-            >
-              Login
-            </Link>
-
-            {auth && (
+            {session.data?.user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="outline"
-                    className="bg-transparent border-0 text-slate-900 hover:bg-slate-900 hover:text-white"
+                    className="bg-transparent border-0 text-textPrimary hover:bg-slate-900 hover:text-white"
                   >
-                    Profile
+                    {session?.data?.user?.name}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -148,13 +135,36 @@ const Navbar = () => {
                     onValueChange={setPosition}
                     className="flex flex-col space-y-1"
                   >
-                    <Link href={"/profile"}>Profile</Link>
-                    <Link href={"/orders"}>My Orders</Link>
-                    <Link href={"/Settings"}>Settings</Link>
-                    <Link href={"/logout"}>Logout</Link>
+                    {session?.data?.user.role === "ADMIN" ? (
+                      <>
+                        <Link href={"/dashboard"}>Dashboard</Link>
+                        <Link href={"/orders"}>My Orders</Link>
+                        <Link href={"/Settings"}>Settings</Link>
+                        <Link href={"/logout"}>Logout</Link>
+                      </>
+                    ) : (
+                      <>
+                        <Link href={"/orders"}>My Orders</Link>
+                        <Link href={"/Settings"}>Settings</Link>
+                        <Link href={"/logout"}>Logout</Link>
+                      </>
+                    )}
                   </DropdownMenuRadioGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
+            ) : (
+              <Link
+                href="/auth/login"
+                className={classnames({
+                  "text-white p-2 rounded-xl font-semibold":
+                    "/auth/login" === currentPath,
+                  "text-textPrimary": "/auth/login" !== currentPath,
+                  "text-white": isScrolled,
+                  "transition-colors hover:text-[#dbc547] p-2 rounded-xl": true,
+                })}
+              >
+                Login
+              </Link>
             )}
           </ul>
 
@@ -192,7 +202,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex w-full p-4 text-slate-700 hover:bg-secondaryColor hover:text-white"
+                className="flex w-full p-4 text-slate-700 hover:bg-secondaryColor hover:text-bgPrimary"
                 onClick={() => setIsOpen(false)}
               >
                 <span>{link.label}</span>
@@ -202,7 +212,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex w-full p-4 text-slate-700 hover:bg-secondaryColor hover:text-white"
+                className="flex w-full p-4 text-slate-700 hover:bg-secondaryColor hover:text-bgPrimary"
                 onClick={() => setIsOpen(false)}
               >
                 <span>{link.label}</span>

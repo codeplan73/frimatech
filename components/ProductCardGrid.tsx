@@ -16,7 +16,7 @@ const ProductCardGrid = ({ image, price, name, rating, link }: Props) => {
   return (
     <Link
       href={link}
-      className="flex flex-col border border-slate-200 max-w-sm bg-white gap-2 rounded-xl drop-shadow-lg overflow-hidden p-4"
+      className="flex flex-col max-w-sm gap-2 p-4 overflow-hidden bg-white border border-slate-200 rounded-xl drop-shadow-lg"
     >
       <div className="relative w-full" style={{ paddingBottom: "100%" }}>
         <Image
@@ -26,9 +26,9 @@ const ProductCardGrid = ({ image, price, name, rating, link }: Props) => {
           alt="product image"
         />
       </div>
-      <div className="flex py-2 items-start justify-between">
+      <div className="flex items-start justify-between py-2">
         <div className="flex flex-col space-y-1">
-          <p className="text-md font-semibold">{price}</p>
+          <p className="font-semibold text-md">{price}</p>
           <div className="flex items-start justify-start space-x-2">
             <p className="flex">
               <IoIosStar className="text-yellow-400" />
@@ -36,22 +36,14 @@ const ProductCardGrid = ({ image, price, name, rating, link }: Props) => {
               <IoIosStar className="text-yellow-400" />
               <IoIosStar className="text-yellow-400" />
             </p>
-            {/* <span className="text-yellow-400 -mt-1">{rating}</span> */}
+            {/* <span className="-mt-1 text-yellow-400">{rating}</span> */}
           </div>
-          <h4 className="text-balance text-lg leading-tight text-slate-500 line-clamp-1">
+          <h4 className="text-lg leading-tight text-balance text-slate-500 line-clamp-1">
             {name}
           </h4>
         </div>
-        <CiHeart className="border border-slate-400 rounded-md text-blue-700 font-extrabold text-xl cursor-pointer" />
+        <CiHeart className="text-xl font-extrabold text-blue-700 border rounded-md cursor-pointer border-slate-400" />
       </div>
-      {/* <div className="flex w-full gap-2">
-        <button className="text-center flex-1 py-2 rounded-full text-slate-900 bg-slate-200">
-          Add to Cart
-        </button>
-        <button className="text-center flex-1 py-2 rounded-full text-slate-200 bg-slate-900">
-          Buy Now
-        </button>
-      </div> */}
     </Link>
   );
 };
