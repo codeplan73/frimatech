@@ -33,11 +33,11 @@ export default async function ProtectedLayout({
         <html lang="en" suppressHydrationWarning>
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <body className={`${heebo.className}, ${cn(fontSans.variable)}`}>
-            <div className="w-full flex flex-col">
+            <div className="flex flex-col w-full">
               <Sidebar />
-              <div className="md:ml-56 flex flex-col">
+              <div className="flex flex-col md:ml-56">
                 <Navbar />
-                <main className="py-6 px-6 md:px-20 bg-slate-100 overflow-y-auto">
+                <main className="px-6 py-6 overflow-y-auto md:px-20 bg-slate-100">
                   {children}
                 </main>
               </div>

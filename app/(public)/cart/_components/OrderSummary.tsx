@@ -8,7 +8,7 @@ import PayStackCheckout from "./PayStackCheckout";
 
 const OrderSummary = () => {
   const session = useSession();
-  const { items, total, products } = useCartStore();
+  const { items, total } = useCartStore();
 
   const formattedTotal = new Intl.NumberFormat("en-ng", {
     style: "currency",
@@ -47,8 +47,6 @@ const OrderSummary = () => {
           </div>
         </div>
       </div>
-
-      {session.data?.user.email}
 
       {session.data?.user ? (
         <PayStackCheckout />

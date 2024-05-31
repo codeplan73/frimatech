@@ -4,10 +4,14 @@ import React from "react";
 import useCartStore from "@/store/cartStore";
 import { PaystackButton } from "react-paystack";
 import { useSession } from "next-auth/react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
-const ShippingAddressPagee = () => {
+const CheckoutPage = () => {
   const session = useSession();
-  const { items, total, products } = useCartStore();
+  const router = useRouter();
+  const { items, total, products, clearCart } = useCartStore();
   const amountToSend = parseFloat(total()) * 100;
   const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
 
@@ -29,22 +33,33 @@ const ShippingAddressPagee = () => {
     },
   };
 
-  const handlePaystackSuccessAction = (reference: any) => {
+  const handlePaystackSuccessAction = async (reference: any) => {
     const orderDetails = {
-      address: session.data?.user.address,
-      city: session.data?.user.city,
+      userId: session.data?.user.id,
+      shippingName: session.data?.user.name,
+      shippingAddress: session.data?.user.address,
+      shippingCity: session.data?.user.city,
       paymentStatus: "Paid",
       deliveryStatus: "Pending",
-      state: session.data?.user.state,
+      shippingState: session.data?.user.state,
       totalAmount: amountToSend / 100,
-      totalItems: items(),
-      orderItems: products,
+      totalItems: items().toString(),
+      items: products,
     };
-    // console.log("Payment Successfull", reference);
-    console.log(products, items(), amountToSend / 100, amountToSend);
-    // clearCart();
 
-    console.log("Order Details: ", orderDetails);
+    const res = await axios.post("/api/orders", orderDetails);
+
+    if (res.data) {
+      Swal.fire({
+        title: "Thank you for your order!",
+        text: "Your order was successfully placed check your email for your order details!",
+        icon: "success",
+      });
+
+      clearCart();
+
+      router.push("/orders");
+    }
   };
 
   // you can call this function anything
@@ -67,4 +82,4 @@ const ShippingAddressPagee = () => {
   );
 };
 
-export default ShippingAddressPagee;
+export default CheckoutPage;

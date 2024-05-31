@@ -118,6 +118,15 @@ export const UserSchema = z.object({
   state: z.string().min(1, { message: "stat is required" }),
 });
 
+// export const OrderSchema = z.object({
+//   category: z.string().min(1, { message: "cate is required" }),
+//   phone_number: z.string().min(1, { message: "Phone Number is required" }),
+//   gender: z.string().min(1, { message: "gender is required" }),
+//   address: z.string().min(1, { message: "address is required" }),
+//   city: z.string().min(1, { message: "city is required" }),
+//   state: z.string().min(1, { message: "stat is required" }),
+// });
+
 export const PasswordSchema = z
   .object({
     password: z
