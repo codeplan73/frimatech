@@ -9,6 +9,7 @@ import classnames from "classnames";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,8 +42,16 @@ const Navbar = () => {
   const [position, setPosition] = useState("bottom");
   const auth = false;
   const session = useSession();
+  const router = useRouter();
 
   const { items } = useCartStore();
+
+  const logout = async () => {
+    const res = await fetch("/api/logout", { method: "POST" });
+    if (res.ok) {
+      router.push("/");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,7 +124,7 @@ const Navbar = () => {
               })}
             >
               <BsCart4 className="z-10 text-xl" />
-              <span className="flex flex-col text- font-semibold">
+              <span className="flex flex-col font-semibold text-">
                 {items()}
               </span>
             </Link>
@@ -133,20 +142,34 @@ const Navbar = () => {
                   <DropdownMenuRadioGroup
                     value={position}
                     onValueChange={setPosition}
-                    className="flex flex-col space-y-1"
+                    className="flex flex-col px-2 space-y-1"
                   >
                     {session?.data?.user.role === "ADMIN" ? (
                       <>
                         <Link href={"/dashboard"}>Dashboard</Link>
                         <Link href={"/orders"}>My Orders</Link>
                         <Link href={"/Settings"}>Settings</Link>
-                        <Link href={"/logout"}>Logout</Link>
+                        <button
+                          className="text-start"
+                          onClick={(e) => {
+                            logout();
+                          }}
+                        >
+                          Logout
+                        </button>
                       </>
                     ) : (
                       <>
                         <Link href={"/orders"}>My Orders</Link>
                         <Link href={"/Settings"}>Settings</Link>
-                        <Link href={"/logout"}>Logout</Link>
+                        <button
+                          className="text-start"
+                          onClick={(e) => {
+                            logout();
+                          }}
+                        >
+                          Logout
+                        </button>
                       </>
                     )}
                   </DropdownMenuRadioGroup>

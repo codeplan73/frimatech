@@ -83,21 +83,39 @@ model Product {
   imageUrl    String
   category    String
   quantity    String
-  orders      Order[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Order {
-  id        String    @id @default(cuid())
-  userId    String
-  total     Float
-  status    String
-  products  Product[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  user      User      @relation(fields: [userId], references: [id])
+  id           Int      @id @default(autoincrement())
+  userId       String
+  totalAmount  Float
+  status       String
+  items        OrderItem[]
+  shippingName String   @db.VarChar(100)
+  shippingAddress String @db.VarChar(255)
+  shippingCity String   @db.VarChar(50)
+  shippingState String  @db.VarChar(50)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
 }
+
+model OrderItem {
+  id          Int      @id @default(autoincrement())
+  orderId     Int
+  category  String
+  description String @db.Text
+  imageUrl  String
+  price       Float
+  productName String
+  quantity    Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  order       Order    @relation(fields: [orderId], references: [id])
+}
+
 
 model Blog {
   id         String    @id @default(cuid())

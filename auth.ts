@@ -36,6 +36,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
       }
+
+      session.user.name = token.name ?? "";
+      session.user.email = token.email ?? "";
+      session.user.address = (token.address ?? "").toString();
+      session.user.city = (token.city ?? "").toString();
+      session.user.state = (token.state ?? "").toString();
+      session.user.gender = (token.gender ?? "").toString();
+
       return session;
     },
     async jwt({ token }) {

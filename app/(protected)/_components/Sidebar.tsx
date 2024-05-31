@@ -29,7 +29,7 @@ const Sidebar = () => {
       : [];
 
   return (
-    <aside className="bg-textPrimary hidden h-full md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 px-4 py-6 gap-6 shadow-lg z-10 ">
+    <aside className="z-10 hidden h-full gap-6 px-4 py-6 shadow-lg bg-textPrimary md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 ">
       <Link href="/">
         <Image
           src="/images/logo.jpeg"
@@ -59,34 +59,13 @@ const Sidebar = () => {
             </Link>
           ))}
         </ul>
-        {/* )} */}
-        {/* {session.data?.user.role === "CLIENT" && (
-          <ul className="flex flex-col space-y-5">
-            {clientLink.map((link) => (
-              <Link
-                key={link.id}
-                href={link.link}
-                className={classnames({
-                  "text-primaryColor bg-amber-50 p-2 rounded-xl":
-                    link.link === currentPath,
-                  "text-slate-700": link.link !== currentPath,
-                  "flex text-lg items-center space-x-3 hover:bg-amber-50 py-2 px-2 rounded-xl":
-                    true,
-                })}
-              >
-                <span>{link.icon}</span>
-                <span>{link.label}</span>
-              </Link>
-            ))}
-          </ul>
-        )} */}
 
         <div className="flex flex-col items-start space-y-2">
           <button
             onClick={(e) => {
               logout();
             }}
-            className="flex items-center text-lg space-x-4 w-full hover:bg-amber-50 py-2 px-2"
+            className="flex items-center w-full px-2 py-2 space-x-4 text-lg hover:bg-amber-50"
           >
             <span>
               <LuLogOut />

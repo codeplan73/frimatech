@@ -7,68 +7,19 @@ import Image from "next/image";
 import { GoTrash } from "react-icons/go";
 import Link from "next/link";
 import { BsCart4 } from "react-icons/bs";
-import { PaystackButton } from "react-paystack";
-import { useSession } from "next-auth/react";
+import OrderSummary from "./_components/OrderSummary";
 
 const CartPage = () => {
-  const session = useSession();
+
   const {
     reduceFromCart,
     removeFromCart,
     addToCart,
     items,
     clearCart,
-    total,
     products,
   } = useCartStore();
 
-  console.log("User:", session.data?.user);
-
-  const formattedTotal = new Intl.NumberFormat("en-ng", {
-    style: "currency",
-    currency: "NGN",
-  }).format(Number(total()));
-
-  const amountToSend = parseFloat(total()) * 100;
-  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
-
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: session.data?.user.email!,
-    name: session.data?.user.name!,
-    amount: amountToSend,
-    publicKey,
-    metadata: {
-      custom_fields: [
-        {
-          display_name: session.data?.user.name!,
-          variable_name: "Iphone 15 Pro Max",
-          value: amountToSend,
-        },
-        // To pass extra metadata, add an object with the same fields as above
-      ],
-    },
-  };
-
-  const handlePaystackSuccessAction = (reference: any) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log("Payment Successfull", reference);
-    console.log(products, items(), amountToSend / 100, amountToSend);
-    clearCart();
-  };
-
-  // you can call this function anything
-  const handlePaystackCloseAction = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
-  };
-
-  const componentProps = {
-    ...config,
-    text: "Checkout",
-    onSuccess: (reference: any) => handlePaystackSuccessAction(reference),
-    onClose: handlePaystackCloseAction,
-  };
 
   return (
     <>
@@ -174,67 +125,7 @@ const CartPage = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 md:col-span-1">
-              <div className="flex flex-col gap-4 px-10 py-6 bg-white rounded-md shadow min-h-max ">
-                <p className="text-xl font-semibold">Order Summary</p>
-                <hr />
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-400">Discount</span>
-                    <span className="text-sm font-semibold text-slate-800">
-                      0.00
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-400">Delivery</span>
-                    <span className="text-sm font-semibold text-slate-800">
-                      0.00
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-400">Tax</span>
-                    <span className="text-sm font-semibold text-slate-800">
-                      0.00
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-400">Total Items</span>
-                    <span className="text-sm font-semibold text-slate-800">
-                      {items()}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-400">Total</span>
-                    <span className="text-sm font-semibold text-slate-800">
-                      {formattedTotal}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {session.data?.user.name}
-              {session.data?.user ? (
-                <PaystackButton
-                  className="p-4 py-2 text-white bg-blue-500 rounded-md"
-                  {...componentProps}
-                  publicKey={componentProps.publicKey!}
-                />
-              ) : (
-                <div className="flex flex-col gap-2 p-4 bg-white">
-                  <Link
-                    href="/auth/login"
-                    className="py-2 font-semibold text-center text-white rounded-md bg-bgPrimary"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    href="/auth/register"
-                    className="py-2 font-semibold text-center text-white rounded-md bg-bgPrimary"
-                  >
-                    Register
-                  </Link>
-                </div>
-              )}
-            </div>
+            <OrderSummary />
           </div>
         </section>
       ) : (
