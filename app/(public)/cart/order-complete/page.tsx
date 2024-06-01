@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import Banner from "@/components/page-banner";
 
 const ShippingAddressPagee = () => {

@@ -2,10 +2,8 @@
 
 import React from "react";
 import ProductCardGrid from "@/components/ProductCardGrid";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { Product } from "@prisma/client";
 import Skeleton from "react-loading-skeleton";
+import { useProducts } from "@/hook/useProductHook";
 
 const ProductList = () => {
   const { data: products, error, isLoading } = useProducts();
@@ -69,20 +67,5 @@ const ProductList = () => {
     </>
   );
 };
-
-export const getProducts = async (): Promise<Product[]> => {
-  const result = await axios.get(`/api/products`);
-  console.log(result.data);
-  return result.data;
-};
-
-const useProducts = () =>
-  useQuery<Product[]>({
-    queryKey: ["products"],
-    queryFn: getProducts,
-    // queryFn: () => axios.get("/api/products").then((res) => res.data),
-    staleTime: 60 * 1000, //60s
-    retry: 3,
-  });
 
 export default ProductList;

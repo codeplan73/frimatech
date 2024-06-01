@@ -11,12 +11,17 @@ import { Product as PrismaProduct } from "@prisma/client";
 type Product = PrismaProduct & { quantity: string };
 
 const ProductDatails = ({ product }: { product: Product }) => {
-  const { removeFromCart, addToCart, items } = useCartStore();
+  const { addToCart, products } = useCartStore();
   const price = parseFloat(product.price);
   const formattedPrice = new Intl.NumberFormat("en-ng", {
     style: "currency",
     currency: "NGN",
   }).format(price);
+
+  // Get the quantity of the current product in the cart
+  const productInCart = products.find((p) => p.id === product.id);
+  const quantityInCart = productInCart ? parseInt(productInCart.quantity) : 0;
+
   return (
     <div className="grid grid-cols-1 gap-10 mx-auto my-12 space-y-4 md:grid-cols-5 max-w-7xl">
       <div className="col-span-2 space-y-6">
@@ -42,16 +47,32 @@ const ProductDatails = ({ product }: { product: Product }) => {
             </p>
           </div>
 
+          <Button
+            disabled={quantityInCart >= parseInt(product.quantity)}
+            onClick={() => {
+              addToCart({
+                ...product,
+                availableQuantity: parseInt(product.quantity),
+                updated: new Date(),
+              });
+              toast.success("Item Added to Cart");
+            }}
+            className="text-textPrimary bg-bgPrimary hover:text-white"
+          >
+            Add to Cart {quantityInCart}
+          </Button>
+
           <div className="space-x-4 space-y-4">
-            <Button
+            {/* <Button
+              disabled={items() > parseInt(product.quantity)}
               onClick={() => {
                 addToCart({ ...product, updated: new Date() });
                 toast.success("Item Added to Cart");
               }}
               className="text-textPrimary bg-bgPrimary hover:text-white"
             >
-              Add to Cart
-            </Button>
+              Add to Cart {items()}
+            </Button> */}
           </div>
         </div>
       </div>

@@ -1,41 +1,54 @@
-// import { VerificationEmailTemplate } from "@/components/mail/Varification-mail-template";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
+import Handlebars from "handlebars";
+import { orderTemplate } from "./templates/orderMail";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const domain = process.env.NEXT_PUBLIC_APP_URL;
-
-export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
-  await resend.emails.send({
-    from: "mail@auth-masterclass-tutorial.com",
-    to: email,
-    subject: "2FA Code",
-    html: `<p>Your 2FA code: ${token}</p>`,
+export async function sendMail({
+  to,
+  name,
+  subject,
+  body,
+}: {
+  to: string;
+  name: string;
+  subject: string;
+  body: string;
+}) {
+  const { SMPT_EMAIL, SMTP_GMAIL_PASS } = process.env;
+  const transport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: SMPT_EMAIL,
+      pass: SMTP_GMAIL_PASS,
+    },
   });
-};
 
-export const sendPasswordResetEmail = async (email: string, token: string) => {
-  const resetLink = `${domain}/auth/new-password?token=${token}`;
+  try {
+    const tesResult = await transport.verify();
+    // console.log("test result", tesResult);
+  } catch (error) {
+    console.log(error);
+  }
 
-  await resend.emails.send({
-    from: "mail@auth-masterclass-tutorial.com",
-    to: email,
-    subject: "Reset your password",
-    html: `<p>Click <a href="${resetLink}">here</a> to reset password.</p>`,
-  });
-};
+  try {
+    const sendResult = await transport.sendMail({
+      from: "Musa-Shop",
+      to,
+      subject,
+      html: body,
+    });
+    console.log({ sendResult });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-export const sendVerificationEmail = async (email: string, token: string) => {
-  const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+export function compileOrderTemplate(
+  totalItems: string,
+  totalAmount: number,
+  data: string[]
+) {
+  const template = Handlebars.compile(orderTemplate);
+  const htmlBody = template({ totalItems, totalAmount, data });
 
-  await resend.emails.send({
-    from: "mail@auth-masterclass-tutorial.com",
-    to: email,
-    subject: "Confirm your email",
-    html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`,
-    // react: VerificationEmailTemplate({ confirmLink: confirmLink }),
-    // text: "", // Add an empty string as the value for the 'text' property.
-
-    // html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`,
-  });
-};
+  return htmlBody;
+}

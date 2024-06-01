@@ -18,7 +18,10 @@ const useCartStore = create<CartState>((set, get) => ({
       const products = state.products.map((p) => {
         if (p.id === product.id) {
           hasProduct = true;
-          return { ...p, quantity: (parseInt(p.quantity) + 1).toString() };
+          return {
+            ...p,
+            quantity: (parseInt(p.quantity) + 1).toString(),
+          };
         }
         return p;
       });

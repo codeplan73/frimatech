@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 import { getUserByEmail } from "@/data/user";
 import { RegisterSchema } from "@/schema";
-import { sendVerificationEmail } from "@/lib/mail";
+import { sendVerificationEmail } from "@/lib/resendMail";
 import { generateVerificationToken } from "@/lib/tokens";
 
 export async function POST(request: NextRequest, response: NextResponse) {

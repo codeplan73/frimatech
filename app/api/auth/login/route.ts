@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { generateVerificationToken } from "@/lib/tokens";
-import { sendVerificationEmail } from "@/lib/mail";
+import { sendVerificationEmail } from "@/lib/resendMail";
 
 export async function POST(
   request: NextRequest,

@@ -4,6 +4,7 @@ interface Product {
   description: string;
   price: string;
   quantity: string;
+  availableQuantity: Number;
   imageUrl: string;
   category: string;
   createdAt: Date;

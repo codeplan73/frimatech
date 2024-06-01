@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { sendOrderMail } from "@/actions/sendOrderMail";
 
 const CheckoutPage = () => {
   const session = useSession();
@@ -48,6 +49,7 @@ const CheckoutPage = () => {
     };
 
     const res = await axios.post("/api/orders", orderDetails);
+    const data = res.data.orderItems;
 
     if (res.data) {
       Swal.fire({
@@ -56,9 +58,17 @@ const CheckoutPage = () => {
         icon: "success",
       });
 
+      console.log("Order Details", data);
+
       clearCart();
 
-      router.push("/orders");
+      await sendOrderMail(
+        orderDetails.totalItems,
+        orderDetails.totalAmount,
+        data
+      );
+
+      router.push("/");
     }
   };
 

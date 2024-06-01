@@ -10,7 +10,6 @@ import { BsCart4 } from "react-icons/bs";
 import OrderSummary from "./_components/OrderSummary";
 
 const CartPage = () => {
-
   const {
     reduceFromCart,
     removeFromCart,
@@ -19,7 +18,6 @@ const CartPage = () => {
     clearCart,
     products,
   } = useCartStore();
-
 
   return (
     <>
@@ -93,6 +91,18 @@ const CartPage = () => {
                               >
                                 +
                               </button>
+                              {/* <button
+                                disabled={
+                                  cart.availableQuantity
+                                    ? parseInt(cart.quantity) >=
+                                      cart.availableQuantity.valueOf()
+                                    : false
+                                }
+                                onClick={() => addToCart(cart)}
+                                className="text-xl font-semibold"
+                              >
+                                +
+                              </button> */}
                             </div>
                           </td>
 
