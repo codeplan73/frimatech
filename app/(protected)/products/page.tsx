@@ -4,7 +4,7 @@ import BreadCumNav from "@/components/BreadCumNav";
 
 const ProductsPage = async () => {
   return (
-    <div className="container mx-auto py-10 bg-white">
+    <div className="container py-10 mx-auto bg-white">
       <BreadCumNav dashboard="dashboard" currentPage="products" />
       <ProductList />
     </div>

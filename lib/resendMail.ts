@@ -39,3 +39,4 @@ export const sendVerificationEmail = async (email: string, token: string) => {
     // html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`,
   });
 };
+ 

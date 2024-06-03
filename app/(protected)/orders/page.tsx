@@ -1,6 +1,8 @@
 import React from "react";
 import { auth } from "@/auth";
 import UserOrder from "../_components/UserOrder";
+import OrderList from "./_components/Orderlist";
+import BreadCumNav from "@/components/BreadCumNav";
 
 const OrderPage = async () => {
   const session = await auth();
@@ -9,10 +11,9 @@ const OrderPage = async () => {
     return <UserOrder />;
 
   return (
-    <div>
-      AdminOrderPage
-      <h4>{session?.user.name}</h4>
-      <h4>{session?.user.role}</h4>
+    <div className="container py-10 mx-auto bg-white">
+      <BreadCumNav dashboard="dashboard" currentPage="Orders" />
+      <OrderList />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer";
-import Handlebars from "handlebars";
-import { orderTemplate } from "./templates/orderMail";
+import * as Handlebars from "handlebars";
+import { orderTemplate } from "./templates/orderTemplate";
+import { resetPasswordTemplate } from "./templates/resetPasswordTemplate";
+const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 export async function sendMail({
   to,
@@ -49,6 +51,13 @@ export function compileOrderTemplate(
 ) {
   const template = Handlebars.compile(orderTemplate);
   const htmlBody = template({ totalItems, totalAmount, data });
+
+  return htmlBody;
+}
+
+export function compilePasswordResetEmail(url: string) {
+  const template = Handlebars.compile(resetPasswordTemplate);
+  const htmlBody = template(url);
 
   return htmlBody;
 }

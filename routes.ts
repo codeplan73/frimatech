@@ -16,6 +16,7 @@ export const publicRoutes = [
   "/api/products",
   "/api/products/:id",
   "/paystack",
+  "/sendmail",
 ];
 
 /**

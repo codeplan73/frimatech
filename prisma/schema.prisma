@@ -92,7 +92,7 @@ model Order {
   userId          String
   totalAmount     Float
   paymentStatus   String
-  deliveryStatus  String
+  deliveryStatus  String 
   totalItems      String
   items           OrderItem[]
   shippingName    String      @db.VarChar(100)

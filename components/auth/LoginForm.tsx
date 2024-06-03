@@ -56,7 +56,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center py-16 px-10">
+    <div className="flex items-center justify-center px-10 py-16">
       <Card className="w-[420px]">
         <CardHeader>
           <CardTitle>Secure Login</CardTitle>
@@ -66,7 +66,7 @@ const RegisterForm = () => {
         </CardHeader>
         <form onSubmit={handleSubmit(handleLogin)}>
           <CardContent>
-            <div className="grid w-full items-center gap-4">
+            <div className="grid items-center w-full gap-4">
               <div className="flex flex-col space-y-1.5">
                 <InputField
                   label="Email"
@@ -102,10 +102,10 @@ const RegisterForm = () => {
             </Button>
           </CardFooter>
           <CardFooter className="flex justify-between">
-            <Link className="underline text-sm" href="/auth/forgot">
+            <Link className="text-sm underline" href="/auth/forgot">
               Forgot Password
             </Link>
-            <Link className="underline text-sm" href="/auth/register">
+            <Link className="text-sm underline" href="/auth/register">
               Create Account
             </Link>
           </CardFooter>
