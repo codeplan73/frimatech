@@ -37,12 +37,12 @@ export const services = [
 
 const Service = () => {
   return (
-    <section className="py-6 w-full px-6 md:px-32">
-      <div className="w-full container flex flex-col py-8 items-center gap-4">
-        <h1 className="font-sans font-semibold text-3xl md:text-6xl text-center">
+    <section className="w-full px-6 py-6 md:px-32">
+      <div className="container flex flex-col items-center w-full gap-4 py-8">
+        <h1 className="font-sans text-3xl font-semibold text-center md:text-6xl">
           Our Services
         </h1>
-        <p className="text-gray-500 text-justify text-md">
+        <p className="text-justify text-gray-500 text-md">
           Discover unparalleled tech solutions with Frima Technology. Access
           reliable, secure remote assistance from our attentive and experienced
           team. With a track record of serving over 1000 computers in Benin City
@@ -50,7 +50,7 @@ const Service = () => {
           satisfaction.
         </p>
 
-        <div className="grid grid-col-1 md:grid-cols-3 gap-8 py-10">
+        <div className="grid gap-8 py-10 grid-col-1 md:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -61,12 +61,12 @@ const Service = () => {
           ))}
         </div>
 
-        <Link
-          href="/services"
-          className="text-textPrimary bg-bgPrimary px-6 py-3 rounded-xl font-sans font-semibold hover:text-white hover:bg-secondaryColor"
+        {/* <Link
+          href="/about"
+          className="px-6 py-3 font-sans font-semibold text-textPrimary bg-bgPrimary rounded-xl hover:text-white hover:bg-secondaryColor"
         >
           Learn More
-        </Link>
+        </Link> */}
       </div>
     </section>
   );

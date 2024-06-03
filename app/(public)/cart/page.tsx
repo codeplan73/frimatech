@@ -85,12 +85,12 @@ const CartPage = () => {
                               <span className="font-semibold">
                                 {cart.quantity}
                               </span>
-                              <button
+                              {/* <button
                                 onClick={() => addToCart(cart)}
                                 className="text-xl font-semibold"
                               >
                                 +
-                              </button>
+                              </button> */}
                               {/* <button
                                 disabled={
                                   cart.availableQuantity

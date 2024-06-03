@@ -42,7 +42,7 @@ const ProductCardGrid = ({ image, price, name, rating, link }: Props) => {
             {name}
           </h4>
         </div>
-        <CiHeart className="text-xl font-extrabold text-blue-700 border rounded-md cursor-pointer border-slate-400" />
+        {/* <CiHeart className="text-xl font-extrabold text-blue-700 border rounded-md cursor-pointer border-slate-400" /> */}
       </div>
     </Link>
   );

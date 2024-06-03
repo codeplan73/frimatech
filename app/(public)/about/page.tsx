@@ -5,6 +5,7 @@ import { GrUserExpert } from "react-icons/gr";
 import { FaTools } from "react-icons/fa";
 import Card from "@/components/about/AboutCard";
 import ServiceCard from "@/components/about/ServiceCard";
+import Service from "@/components/home/Service";
 
 const services = [
   {
@@ -59,43 +60,43 @@ const AboutPage = () => {
         style={{ backgroundImage: "url('/img/about.png')" }}
       />
 
-      <section className="container w-full py-16 md:py-24 flex flex-col-reverse md:flex-row md:gap-20">
-        <div className="w-full md:w-6/12 flex flex-col gap-6 p-8">
-          <div className="w-full flex items-end justify-start gap-6">
+      <section className="container flex flex-col-reverse w-full py-16 md:py-24 md:flex-row md:gap-20">
+        <div className="flex flex-col w-full gap-6 p-8 md:w-6/12">
+          <div className="flex items-end justify-start w-full gap-6">
             <Image
-              src="/img/about-1.jpg"
+              src="/main.png"
               alt="image"
               width={1000}
               height={1000}
-              className="w-12/12 h-80"
+              className="w-12/12 md:h-[90vh]"
             />
           </div>
-          <div className="w-full flex items-start justify-start gap-6">
+          <div className="flex flex-col items-start justify-start w-full gap-6 md:flex-row">
             <Image
-              src="/img/about-2.jpg"
+              src="/repair.png"
               alt="image"
               width={1000}
               height={1000}
-              className="w-5/12 h-72"
+              className="w-full md:w-5/12 h-72"
             />
             <Image
-              src="/img/frima-about.jpeg"
+              src="/sale.png"
               alt="image"
               width={1000}
               height={1000}
-              className="w-7/12 h-96"
+              className="w-full md:w-7/12 h-96"
             />
           </div>
         </div>
 
-        <div className="w-full md:w-6/12 flex flex-col items-start justify-start gap-12">
-          <h4 className="text-start md:text-pretty text-3xl md:text-5xl font-semibold leading-snug capitalize">
+        <div className="flex flex-col items-start justify-start w-full gap-12 md:w-6/12">
+          <h4 className="text-3xl font-semibold leading-snug capitalize text-start md:text-pretty md:text-5xl">
             We Offer Computer Repair & All Manner Of Technical Support...
           </h4>
 
           <div className="flex flex-col items-start gap-12">
             <Card
-              icon={<GrUserExpert className="text-slate-200 p-1 font-bold" />}
+              icon={<GrUserExpert className="p-1 font-bold text-slate-200" />}
               title=" Qualified & Expert Professionals"
               text=" At Frima Technology, our mission is to provide top-quality PC and
              laptop repair services that exceed customer expectations. We are
@@ -109,7 +110,7 @@ const AboutPage = () => {
             />
 
             <Card
-              icon={<FaTools className="text-slate-200 p-1 font-bold" />}
+              icon={<FaTools className="p-1 font-bold text-slate-200" />}
               title="Modern Tools & Technology Use"
               text="  With a focus on transparent communication, integrity, and
             personalized service, we aim to build long-term relationships with
@@ -126,29 +127,8 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="bg-slate-100 w-full py-16 md:py-20  flex flex-col gap-12 md:gap-20 md:px-36 px-10">
-        <div className="w-full  mx-auto flex flex-col items-center justify-center gap-6">
-          <h2 className="text-center text-3xl md:text-5xl font-bold text-slate-500">
-            Our Services
-          </h2>
-          <p className="text-center text-slate-500 text-md font-sans ">
-            {`
-          Frima Technology offers you tech services anywhere and anytime. Our techies are reliable, attentive and patient. We also offer reliable secure remote tech assistance. We have served more than 2000 computers in Benin City and Nigeria at large. We guarantee an outstanding experience.
-          `}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.image}
-              image={service.image}
-              title={service.title}
-              text={service.text}
-            />
-          ))}
-        </div>
-      </section>
+      <div className="flex flex-col w-full md:w-12/12"></div>
+      <Service />
     </div>
   );
 };

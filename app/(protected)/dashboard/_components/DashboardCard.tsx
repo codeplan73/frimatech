@@ -1,7 +1,6 @@
 import CardWrapper from "@/components/card-wrapper";
 import React from "react";
 import { IoBriefcaseOutline } from "react-icons/io5";
-import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { BiTask } from "react-icons/bi";
 import { GrTask } from "react-icons/gr";
 import { FaChartLine } from "react-icons/fa";

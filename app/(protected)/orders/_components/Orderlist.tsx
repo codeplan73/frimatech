@@ -1,5 +1,5 @@
 import { columns } from "@/components/table/order-column";
-import { DataTable } from "@/components/table/order-table";
+import { DataTable } from "@/components/table/data-table-filter";
 import { db } from "@/lib/db";
 import { Order } from "@prisma/client";
 
