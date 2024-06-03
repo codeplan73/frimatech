@@ -11,7 +11,11 @@ export interface CartState {
 }
 
 const useCartStore = create<CartState>((set, get) => ({
-  products: JSON.parse(localStorage.getItem("cart") || "[]"),
+  // products: JSON.parse(localStorage.getItem("cart") || "[]"),
+  products:
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("cart") || "[]")
+      : [],
   addToCart: (product: Product) =>
     set((state) => {
       let hasProduct = false;
@@ -29,7 +33,10 @@ const useCartStore = create<CartState>((set, get) => ({
       const updatedProducts = hasProduct
         ? products
         : [...state.products, { ...product, quantity: "1" }];
-      localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      // localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      }
       return { products: updatedProducts };
     }),
 
@@ -43,20 +50,29 @@ const useCartStore = create<CartState>((set, get) => ({
           return p;
         })
         .filter((p) => parseInt(p.quantity) > 0);
-      localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      // localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      }
       return { products: updatedProducts };
     }),
 
   removeFromCart: (product: Product) =>
     set((state) => {
       const updatedProducts = state.products.filter((p) => p.id !== product.id);
-      localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      // localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(updatedProducts));
+      }
       return { products: updatedProducts };
     }),
 
   clearCart: () =>
     set(() => {
-      localStorage.removeItem("cart");
+      // localStorage.removeItem("cart");
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("cart");
+      }
       return { products: [] };
     }),
 
