@@ -1,36 +1,35 @@
 "use client";
 
-import React, {useState} from "react";
 import useCartStore from "@/store/cartStore";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 // import PayStackCheckout from "./PayStackCheckout";
 
 const OrderSummary = () => {
-   const [message, setMessage] = useState("");
   const session = useSession();
   const { items, total, products } = useCartStore();
 
-  const formattedTotal = new Intl.NumberFormat("en-ng", {
-    style: "currency",
-    currency: "NGN",
-  }).format(Number(total()));
+  const formatCurrency = (number: string) => {
+    return new Intl.NumberFormat("en-ng", {
+      style: "currency",
+      currency: "NGN",
+    }).format(Number(number));
+  };
 
-
-
-
-   const handleSubmit = (e: any) => {
-
-    const messageString = `Items: ${products.map(
+  const handleSubmit = (e: any) => {
+    const messageString = `Hello, I would like to make an order for following Items: ${products
+      .map(
         (item) =>
-          `${item.productName} (Quantity: ${item.quantity}, Price: ${item.price})`
+          `${item.productName} (Quantity: ${
+            item.quantity
+          }, Price: ${formatCurrency(item.price)})`
       )
       .join(", ")}
 
-      <br />
-      Total: ${formattedTotal}`;
+    Total Items: ${items()},
+    Total Amount: ${formatCurrency(total())}`;
 
-    const whatsappNumber = "+2349168189258"; // Replace with the WhatsApp number you want to send messages to
+    const whatsappNumber = "+2349168189258";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       messageString
     )}`;
@@ -64,14 +63,14 @@ const OrderSummary = () => {
           <div className="flex items-center justify-between">
             <span className="text-sm text-slate-400">Total</span>
             <span className="text-sm font-semibold text-slate-800">
-              {formattedTotal}
+              {formatCurrency(total())}
             </span>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-2 p-4 bg-white">
         <button
-         onClick={handleSubmit}
+          onClick={handleSubmit}
           className="py-2 font-semibold text-center text-white rounded-md bg-bgPrimary"
         >
           Checkout via WhatsApps

@@ -20,6 +20,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { IoAddSharp } from "react-icons/io5";
 
 import {
   Table,
@@ -79,6 +80,11 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+
+        <Link href={"/products/new"} className="flex items-center space-x-2 bg-textPrimary px-2 py-2 rounded-md">
+          <IoAddSharp className="text-2xl font-bold" />
+          <span>Add Product</span>
+        </Link>
       </div>
       <div className="border rounded-md">
         <Table>
