@@ -1,19 +1,41 @@
 "use client";
 
-import React from "react";
+import React, {useState} from "react";
 import useCartStore from "@/store/cartStore";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 // import PayStackCheckout from "./PayStackCheckout";
 
 const OrderSummary = () => {
+   const [message, setMessage] = useState("");
   const session = useSession();
-  const { items, total } = useCartStore();
+  const { items, total, products } = useCartStore();
 
   const formattedTotal = new Intl.NumberFormat("en-ng", {
     style: "currency",
     currency: "NGN",
   }).format(Number(total()));
+
+
+
+
+   const handleSubmit = (e: any) => {
+
+    const messageString = `Items: ${products.map(
+        (item) =>
+          `${item.productName} (Quantity: ${item.quantity}, Price: ${item.price})`
+      )
+      .join(", ")}
+
+      <br />
+      Total: ${formattedTotal}`;
+
+    const whatsappNumber = "+2349168189258"; // Replace with the WhatsApp number you want to send messages to
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      messageString
+    )}`;
+    window.open(whatsappLink, "_blank");
+  };
 
   return (
     <div className="flex flex-col gap-4 md:col-span-1">
@@ -48,12 +70,12 @@ const OrderSummary = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2 p-4 bg-white">
-        <Link
-          href="/auth/login"
+        <button
+         onClick={handleSubmit}
           className="py-2 font-semibold text-center text-white rounded-md bg-bgPrimary"
         >
           Checkout via WhatsApps
-        </Link>
+        </button>
       </div>
 
       {/* {session.data?.user ? (
