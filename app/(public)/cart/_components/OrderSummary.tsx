@@ -29,7 +29,7 @@ const OrderSummary = () => {
     Total Items: ${items()},
     Total Amount: ${formatCurrency(total())}`;
 
-    const whatsappNumber = "+2349168189258";
+    const whatsappNumber = "+2347060482923";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       messageString
     )}`;
