@@ -17,7 +17,7 @@ const OrderSummary = () => {
   };
 
   const handleSubmit = (e: any) => {
-    const messageString = `Hello, I would like to make an order for following Items: ${products
+    const messageString = `Hello, I would like to make an order for the following Items: ${products
       .map(
         (item) =>
           `${item.productName} (Quantity: ${
