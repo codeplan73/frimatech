@@ -33,7 +33,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       </label>
       {publicId && <Image src={url} width={270} height={180} alt="Image" />}
       <CldUploadWidget
-        uploadPreset="nah8zwf4"
+        uploadPreset="fhtjcohs"
         options={{
           sources: ["local", "camera"],
           multiple: false,

@@ -61,16 +61,16 @@ const Footer = () => {
           </div>
           <div className="flex flex-col space-y-2 ">
             <h4 className="text-xl font-semibold text-bgPrimary">Support</h4>
-            <Link className="text-md text-bgPrimary" href="/blog">
+            <Link className="text-md text-bgPrimary no-wrap" href="/contact">
               Contact Us
             </Link>
-            <Link className="text-md text-bgPrimary" href="/">
+            <Link className="text-md text-bgPrimary" href="">
               Return
             </Link>
-            <Link className="text-md text-bgPrimary" href="/blog">
+            <Link className="text-md text-bgPrimary" href="">
               FAQ
             </Link>
-            <Link className="text-md text-bgPrimary" href="/blog">
+            <Link className="text-md text-bgPrimary" href="">
               Terms
             </Link>
           </div>
@@ -107,10 +107,10 @@ const Footer = () => {
           </Link>
         </p>
         <div className="space-x-8 text-sm font-semibold text-bgPrimary">
-          <Link className="text-bgPrimary" href="/terms">
+          <Link className="text-bgPrimary" href="">
             Terms of Service
           </Link>
-          <Link className="text-bgPrimary" href="/policy" target="blank">
+          <Link className="text-bgPrimary" href="" target="blank">
             Privacy Policy
           </Link>
         </div>

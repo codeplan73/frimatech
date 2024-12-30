@@ -51,13 +51,13 @@ const PaymentPage = () => {
       <div className="container">
         <div className="item">
           <div className="overlay-effect"></div>
-          <Image
+          {/* <Image
             className="item-image"
             src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
             alt="product"
             width={300}
             height={300}
-          />
+          /> */}
           <div className="item-details">
             <p className="item-details__title">Coconut Oil</p>
             <p className="item-details__amount">NGN{amount / 100}</p>
