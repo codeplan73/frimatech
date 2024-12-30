@@ -1,9 +1,6 @@
 import Banner from "@/components/page-banner";
-import ProductCardGrid from "@/components/ProductCardGrid";
 import Image from "next/image";
 import { db } from "@/lib/db";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa6";
 import BlogPostitem from "@/components/BlogPostitem";
 
 async function PostsPage() {
@@ -24,50 +21,24 @@ async function PostsPage() {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full md:w-12/12 ">
       <Banner
-        currentPage="Blog"
+        currentPage=""
         title="Blog Posts"
         link="/"
         style={{ backgroundImage: "url('/img/services.png')" }}
       />
 
-      <div className="mx-auto w-full px-6 md:px-32 space-y-8 py-12 bg-slate-100">
-        <div className="container grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 p-4 py-4">
-          {blogs.map((blog: any) => (
-            <ProductCardGrid
-              key={blog.id}
-              image={blog.coverImage || "/images/watch.png"}
-              price="400"
-              name={blog.title}
-              rating="7.5"
-              link={`/blog/${blog.id}`}
-            />
-          ))}
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-start">
-          <Image
-            src="/images/headset.png"
-            height={1000}
-            width={1000}
-            alt={"loader"}
-            className="justify-center h-60 w-60 md:h-40 md:w-60 rounded-md"
+      <div className="flex flex-col gap-8 items-start justify-start py-20 px-16 md:px-20 md:w-9/12 mx-auto w-full">
+        {blogs.map((blog: any) => (
+          <BlogPostitem
+            key={blog.id}
+            image={blog.coverImage}
+            title={blog.title}
+            description={blog.bodyText}
+            link={`/posts/${blog.id}`}
           />
-          <div className="flex flex-col gap-2">
-            <h4 className="text-xl md:text-2xl font-semibold">
-              Exploring the Beauty of fantancy landscapes
-            </h4>
-            <p className="text-sm md:text-base text-gray-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo cum
-              alias dolor animi ut libero atque voluptates neque, optio aliquid!
-            </p>
-            <Link href="/" className="text-blue-500 flex gap-2 items-center">
-              <span className="text-bgPrimary font-bold"> Read More</span>
-              <FaArrowRight className="text-bgPrimary" />
-            </Link>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

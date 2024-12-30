@@ -22,13 +22,13 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-start gap-12">
         <div className="flex flex-col space-y-2">
           <h4 className="text-xl font-semibold text-bgPrimary">Get In Touch</h4>
-          {/* <Image
+          <Image
             alt="logo"
             className="h-24 w-36"
             src={"/img/frima-logo.png"}
             width={1000}
             height={1000}
-          /> */}
+          />
           <p className="text-md text-bgPrimary flex space-x-2 justify-start items-center">
             <FaMapLocationDot className="text-2xl text-bgPrimary" />
             <span>
@@ -106,6 +106,7 @@ const Footer = () => {
             Globe-Raven
           </Link>
         </p>
+        lorem20
         <div className="space-x-8 text-sm font-semibold text-bgPrimary">
           <Link className="text-bgPrimary" href="">
             Terms of Service

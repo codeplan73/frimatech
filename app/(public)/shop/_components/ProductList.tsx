@@ -16,7 +16,7 @@ const ProductList = () => {
         height={100}
         width={100}
         alt={"loader"}
-        className="justify-center"
+        className="justify-center h-60 w-60"
       />
     </div>
   );
