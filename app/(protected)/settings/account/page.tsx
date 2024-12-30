@@ -34,7 +34,7 @@ const AccountSettingsPage = () => {
       setUserData(res.data);
     }
     getUserData();
-  }, []);
+  }, [id]);
 
   const {
     control,

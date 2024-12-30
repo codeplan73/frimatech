@@ -10,12 +10,14 @@ interface Props {
   name: string;
   rating: string;
   link: string;
+  key: any;
 }
 
-const ProductCardGrid = ({ image, price, name, rating, link }: Props) => {
+const ProductCardGrid = ({ image, price, name, rating, link, key }: Props) => {
   return (
     <Link
       href={link}
+      key={key}
       className="flex flex-col max-w-sm gap-2 p-4 overflow-hidden bg-white border border-slate-200 rounded-xl drop-shadow-lg"
     >
       <div className="relative w-full" style={{ paddingBottom: "100%" }}>

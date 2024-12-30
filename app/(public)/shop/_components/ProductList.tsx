@@ -42,7 +42,7 @@ const ProductList = () => {
 
   return (
     <>
-      {products?.map((item) => {
+      {products?.map((item, index) => {
         const price = parseFloat(item.price);
         const formattedPrice = new Intl.NumberFormat("en-ng", {
           style: "currency",
@@ -50,22 +50,22 @@ const ProductList = () => {
         }).format(price);
 
         return (
-          <div className="w-full px-6 py-12 mx-auto space-y-8 md:px-32 bg-slate-100">
-            <h4 className="container text-3xl font-bold md:text-4xl text-bgPrimary">
-              Explore Our recommendations
-            </h4>
+          // <div className="w-full px-6 py-12 mx-auto space-y-8 md:px-32 bg-slate-100">
+          //   <h4 className="container text-3xl font-bold md:text-4xl text-bgPrimary">
+          //     Explore Our recommendations
+          //   </h4>
 
-            <div className="container grid grid-cols-1 gap-12 p-4 py-4 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
-              <ProductCardGrid
-                rating=""
-                key={item.id}
-                image={item.imageUrl}
-                price={formattedPrice}
-                name={item.productName}
-                link={`/shop/${item.id}`}
-              />
-            </div>
-          </div>
+          //   <div className="container grid grid-cols-1 gap-12 p-4 py-4 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
+          <ProductCardGrid
+            rating=""
+            key={index}
+            image={item.imageUrl}
+            price={formattedPrice}
+            name={item.productName}
+            link={`/shop/${item.id}`}
+          />
+          //   </div>
+          // </div>
         );
       })}
     </>
