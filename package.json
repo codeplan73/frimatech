@@ -65,6 +65,7 @@
     "@tailwindcss/typography": "^0.5.13",
     "@tanstack/eslint-plugin-query": "^5.35.6",
     "@types/bcryptjs": "^2.4.6",
+    "@types/next": "^8.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

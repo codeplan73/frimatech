@@ -33,6 +33,7 @@ const DeleteAction = ({ id }: { id: string }) => {
         router.push("/blog");
         <AlertDialogCancel>Cancel</AlertDialogCancel>;
       }
+      router.push("/blog");
       setPending(false);
       // Handle response as neededs
     } catch (error) {

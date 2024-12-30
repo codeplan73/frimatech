@@ -72,6 +72,9 @@ const BlogForm = ({ blog }: { blog?: Blog }) => {
     } catch (error) {
       console.log(error);
       setError("An unexpected error occurred.");
+    } finally {
+      setSubmitting(false);
+      router.refresh(); // Additional refresh
     }
   };
 

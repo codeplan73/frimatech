@@ -37,6 +37,8 @@ const DeleteAction = ({ id }: { id: string }) => {
       // Handle response as needed
     } catch (error) {
       console.error("Error deleting booking:", error);
+    } finally {
+      router.refresh(); // Additional refresh
     }
   };
   return (

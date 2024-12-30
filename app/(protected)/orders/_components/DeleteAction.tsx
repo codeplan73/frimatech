@@ -39,6 +39,8 @@ const DeleteAction = ({ id }: { id: number }) => {
       // Handle response as needed
     } catch (error) {
       console.error("Error deleting order:", error);
+    } finally {
+      router.refresh(); // Additional refresh
     }
   };
   return (

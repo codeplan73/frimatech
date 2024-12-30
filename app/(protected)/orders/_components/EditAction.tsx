@@ -35,6 +35,9 @@ const EditAction = ({ id }: { id: number }) => {
       setPending(false);
     } catch (error) {
       console.error("Error deleting order:", error);
+    } finally {
+      setPending(false);
+      router.refresh(); // Additional refresh
     }
   };
 

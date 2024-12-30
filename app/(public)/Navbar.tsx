@@ -25,7 +25,7 @@ import useCartStore from "@/store/cartStore";
 const links = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
-  // { label: "Blog", href: "/posts" },
+  { label: "Blog", href: "/posts" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
