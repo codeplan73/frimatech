@@ -13,10 +13,7 @@ import { useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BsCart4 } from "react-icons/bs";
@@ -40,7 +37,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const currentPath = usePathname();
   const [position, setPosition] = useState("bottom");
-  const auth = false;
   const session = useSession();
   const router = useRouter();
 
