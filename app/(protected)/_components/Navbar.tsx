@@ -29,12 +29,6 @@ const Navbar = () => {
   return (
     <nav className="z-10 flex items-center w-full px-5 py-5 mx-auto space-x-2 shadow-md bg-textPrimary md:bg-white">
       <ul className="flex items-center justify-between w-full space-x-4 md:hidden">
-        {/* <Link href="/profile" className="block md:hidden">
-          <div className="flex items-center justify-start space-x-2">
-            <CiUser className="p-1 text-4xl border rounded-full hover:bg-warningColor hover:text-white hover:border-warningColor border-slate-500 drop-shadow-xl" />
-          </div>
-        </Link> */}
-
         <Image
           src="/images/logo.jpeg"
           alt="logo"

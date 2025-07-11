@@ -19,6 +19,7 @@ const DashboardCard = async () => {
   const amount = totalRevenue._sum.totalAmount
     ? parseFloat(totalRevenue._sum.totalAmount.toString()!)
     : 0;
+
   const formatted = new Intl.NumberFormat("en-ng", {
     style: "currency",
     currency: "NGN",
