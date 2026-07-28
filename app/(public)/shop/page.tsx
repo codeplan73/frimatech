@@ -56,7 +56,7 @@ export default async function ShopPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#345B58] via-[#345B58] to-[#2a8a7e] py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-[#345B58] via-[#345B58] to-[#2a8a7e] py-16 lg:py-24 pt-30">
         <div className="mx-auto max-w-7xl px-4 text-center lg:px-8">
           <AnimateOnEnter>
             <h1 className="mb-4 text-4xl font-bold text-white lg:text-5xl">

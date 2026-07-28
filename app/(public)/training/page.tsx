@@ -108,6 +108,7 @@ function SanityCourseCard({course}: {course: SanityTraining}) {
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 33vw"
+              unoptimized
             />
           ) : (
             <div className="flex h-full items-center justify-center bg-[#345B58]/5">

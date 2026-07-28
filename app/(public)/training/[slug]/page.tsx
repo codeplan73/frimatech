@@ -169,7 +169,7 @@ export default async function TrainingDetailPage({params}: Props) {
   return (
     <>
       {/* Back link */}
-      <section className="bg-white pb-0 pt-8 lg:pt-12">
+      <section className="bg-white pb-0 pt-32 lg:pt-40">
         <div className="mx-auto max-w-4xl px-4 lg:px-8">
           <Link
             href="/training"
@@ -195,6 +195,7 @@ export default async function TrainingDetailPage({params}: Props) {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 800px"
                   priority
+                  unoptimized
                 />
               </div>
             )}

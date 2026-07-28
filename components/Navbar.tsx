@@ -57,7 +57,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-500  ${
         scrolled
           ? "bg-[#345B58] shadow-lg backdrop-blur-md"
           : "bg-gradient-to-b from-black/50 via-black/30 to-transparent backdrop-blur-sm"
@@ -185,7 +185,7 @@ const Navbar = () => {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <ul className="flex flex-col py-2">
+              <ul className="flex flex-col py-2 bg-slate-100 h-screen">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link

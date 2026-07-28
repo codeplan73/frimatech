@@ -35,7 +35,7 @@ function ProductCard({product}: {product: SanityProduct}) {
               alt={product.images?.[0]?.alt || product.name}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               unoptimized
             />
           ) : (
@@ -103,7 +103,7 @@ export default function ShopClient({products, categories}: Props) {
   }, [products, selectedCategory, searchQuery]);
 
   return (
-    <div className="flex gap-8">
+    <div className="flex flex-col gap-8 lg:flex-row">
       {/* Filters Sidebar */}
       <ShopFilters
         categories={categories}
