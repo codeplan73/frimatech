@@ -19,7 +19,7 @@ export interface HeroSlide {
 export const heroSlides: HeroSlide[] = [
   {
     image:
-      "https://images.unsplash.com/photo-1597872200969-437b790f6b28?w=1200&h=600&fit=crop&auto=format",
+      "/images/bg-2.png",
     imageAlt:
       "Professional computer and laptop repair service at a workbench",
     icon: Wrench,
@@ -54,7 +54,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=1200&h=600&fit=crop&auto=format",
+      "/images/bg-1.png",
     imageAlt:
       "Computer accessories, cables, and parts displayed on a shelf",
     icon: ShoppingBag,

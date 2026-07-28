@@ -1,7 +1,8 @@
-import { create } from "zustand";
+import {create} from "zustand";
+import {useEffect, useState} from "react";
 
 export interface CartState {
-  products: Array<Product & { quantity: string }>;
+  products: Array<Product & {quantity: string}>;
   addToCart: (product: Product) => void;
   reduceFromCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
@@ -10,12 +11,29 @@ export interface CartState {
   total: () => string;
 }
 
+const loadFromStorage = (): Array<Product & {quantity: string}> => {
+  if (typeof window === "undefined") return [];
+  try {
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveToStorage = (products: Array<Product & {quantity: string}>) => {
+  if (typeof window !== "undefined") {
+    try {
+      localStorage.setItem("cart", JSON.stringify(products));
+    } catch {
+      // Storage full or unavailable — silently ignore
+    }
+  }
+};
+
 const useCartStore = create<CartState>((set, get) => ({
-  // products: JSON.parse(localStorage.getItem("cart") || "[]"),
-  products:
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("cart") || "[]")
-      : [],
+  products: [],
+
   addToCart: (product: Product) =>
     set((state) => {
       let hasProduct = false;
@@ -32,12 +50,9 @@ const useCartStore = create<CartState>((set, get) => ({
 
       const updatedProducts = hasProduct
         ? products
-        : [...state.products, { ...product, quantity: "1" }];
-      // localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      if (typeof window !== "undefined") {
-        localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      }
-      return { products: updatedProducts };
+        : [...state.products, {...product, quantity: "1"}];
+      saveToStorage(updatedProducts);
+      return {products: updatedProducts};
     }),
 
   reduceFromCart: (product: Product) =>
@@ -45,35 +60,28 @@ const useCartStore = create<CartState>((set, get) => ({
       const updatedProducts = state.products
         .map((p) => {
           if (p.id === product.id) {
-            return { ...p, quantity: (parseInt(p.quantity) - 1).toString() };
+            return {...p, quantity: (parseInt(p.quantity) - 1).toString()};
           }
           return p;
         })
         .filter((p) => parseInt(p.quantity) > 0);
-      // localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      if (typeof window !== "undefined") {
-        localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      }
-      return { products: updatedProducts };
+      saveToStorage(updatedProducts);
+      return {products: updatedProducts};
     }),
 
   removeFromCart: (product: Product) =>
     set((state) => {
       const updatedProducts = state.products.filter((p) => p.id !== product.id);
-      // localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      if (typeof window !== "undefined") {
-        localStorage.setItem("cart", JSON.stringify(updatedProducts));
-      }
-      return { products: updatedProducts };
+      saveToStorage(updatedProducts);
+      return {products: updatedProducts};
     }),
 
   clearCart: () =>
     set(() => {
-      // localStorage.removeItem("cart");
       if (typeof window !== "undefined") {
         localStorage.removeItem("cart");
       }
-      return { products: [] };
+      return {products: []};
     }),
 
   items: () => get().products.reduce((acc, p) => acc + parseInt(p.quantity), 0),
@@ -81,10 +89,29 @@ const useCartStore = create<CartState>((set, get) => ({
   total: () =>
     get()
       .products.reduce(
-        (acc, p) => acc + parseFloat(p.price) * parseInt(p.quantity),
-        0
+        (acc, p) =>
+          acc +
+          (typeof p.price === "number"
+            ? p.price
+            : parseFloat(p.price || "0")) *
+            parseInt(p.quantity || "1"),
+        0,
       )
       .toFixed(2),
 }));
+
+export function useHydratedCartStore() {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const stored = loadFromStorage();
+    if (stored.length > 0) {
+      useCartStore.setState({products: stored});
+    }
+    setHydrated(true);
+  }, []);
+
+  return hydrated ? useCartStore : null;
+}
 
 export default useCartStore;

@@ -28,10 +28,20 @@ export const structure: StructureResolver = (S) =>
             ]),
         ),
       S.divider(),
+      S.listItem()
+        .title('Training')
+        .child(
+          S.list()
+            .title('Training')
+            .items([
+              S.documentTypeListItem('training').title('Courses'),
+            ]),
+        ),
+      S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !['post', 'category', 'author', 'product', 'productCategory'].includes(
+          !['post', 'category', 'author', 'product', 'productCategory', 'training'].includes(
             item.getId()!,
           ),
       ),

@@ -28,11 +28,16 @@ const links = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const currentPath = usePathname();
   const session = useSession();
   const router = useRouter();
   const {items} = useCartStore();
-  const cartCount = items();
+  const cartCount = hydrated ? items() : 0;
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +62,7 @@ const Navbar = () => {
       className={`fixed top-0 z-50 w-full transition-all duration-500 ${
         scrolled
           ? "bg-[#345B58] shadow-lg backdrop-blur-md"
-          : "bg-transparent"
+          : "bg-gradient-to-b from-black/50 via-black/30 to-transparent backdrop-blur-sm"
       }`}
     >
       <nav

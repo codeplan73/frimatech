@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "../globals.css";
-import { SessionProvider } from "next-auth/react";
-import { auth } from "@/auth";
+// import { SessionProvider } from "next-auth/react";
+// import { auth } from "@/auth";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ToastContainer } from "react-toastify";
-import QueryClientProvider from "./QueryClientProvider";
+// import QueryClientProvider from "./QueryClientProvider";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -80,10 +80,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
+  // const session = await auth();
   return (
-    <QueryClientProvider>
-      <SessionProvider session={session}>
+    // <QueryClientProvider>
+      // <SessionProvider session={session}>
         <html lang="en">
           <head>
             <meta
@@ -143,7 +143,7 @@ export default async function RootLayout({
             <ToastContainer />
           </body>
         </html>
-      </SessionProvider>
-    </QueryClientProvider>
+    //   </SessionProvider>
+    // </QueryClientProvider>
   );
 }

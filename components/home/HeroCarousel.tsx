@@ -99,7 +99,7 @@ const HeroCarousel = () => {
                   src={slide.image}
                   alt={slide.imageAlt}
                   fill
-                  className="object-cover"
+                  className="object-cover bg-left"
                   priority={index === 0}
                   sizes="100vw"
                 />

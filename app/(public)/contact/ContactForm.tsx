@@ -73,7 +73,7 @@ const ContactForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full p-6 space-y-6 border-2 shadow-lg md:w-6/12 md:p-10 rounded-xl"
+        className="w-full space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm lg:p-8"
       >
         <FormField
           control={form.control}
