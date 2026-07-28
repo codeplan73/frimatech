@@ -1,19 +1,15 @@
 "use client";
 
 import useCartStore from "@/store/cartStore";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
-// import PayStackCheckout from "./PayStackCheckout";
 
 const OrderSummary = () => {
-  const session = useSession();
   const { items, total, products } = useCartStore();
 
-  const formatCurrency = (number: string) => {
+  const formatCurrency = (value: string | number) => {
     return new Intl.NumberFormat("en-ng", {
       style: "currency",
       currency: "NGN",
-    }).format(Number(number));
+    }).format(Number(value));
   };
 
   const handleSubmit = (e: any) => {

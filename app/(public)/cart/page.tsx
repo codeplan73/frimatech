@@ -58,6 +58,9 @@ const CartPage = () => {
                         currency: "NGN",
                       }).format(Number(cart.price));
 
+                      const imageSrc = cart.imageUrl ?? "/img/placeholder.png";
+                      const displayName = cart.productName || cart.name || "";
+
                       return (
                         <tr
                           key={cart.id}
@@ -65,14 +68,15 @@ const CartPage = () => {
                         >
                           <td className="flex flex-col items-center px-2 py-2 space-x-4 font-medium text-gray-900 md:flex-row whitespace-nowrap dark:text-white">
                             <Image
-                              src={cart.imageUrl}
+                              src={imageSrc}
                               height={1000}
                               width={1000}
-                              alt={cart.productName}
+                              alt={displayName}
                               className="object-cover rounded-md bg-slate-100 h-14 w-14"
+                              unoptimized
                             />
 
-                            <p>{cart.productName}</p>
+                            <p>{displayName}</p>
                           </td>
                           <td>
                             <div className="flex items-center gap-2 py-1 pl-4 rounded-xl">
@@ -85,13 +89,7 @@ const CartPage = () => {
                               <span className="font-semibold">
                                 {cart.quantity}
                               </span>
-                              {/* <button
-                                onClick={() => addToCart(cart)}
-                                className="text-xl font-semibold"
-                              >
-                                +
-                              </button> */}
-                              {/* <button
+                              <button
                                 disabled={
                                   cart.availableQuantity
                                     ? parseInt(cart.quantity) >=
@@ -99,10 +97,10 @@ const CartPage = () => {
                                     : false
                                 }
                                 onClick={() => addToCart(cart)}
-                                className="text-xl font-semibold"
+                                className="text-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                               >
                                 +
-                              </button> */}
+                              </button>
                             </div>
                           </td>
 
