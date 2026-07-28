@@ -1,36 +1,95 @@
-import Hero from "@/components/home/Hero";
-import HomeProduct from "@/components/home/HomeProduct";
-import Service from "@/components/home/Service";
-import Newsletter from "@/components/Newsletter";
-import Link from "next/link";
+import {Suspense} from "react";
+import type {Metadata} from "next";
+import AnimateOnEnter from "@/components/AnimateOnEnter";
+import HeroCarousel from "@/components/home/HeroCarousel";
+import ServicesGrid from "@/components/home/ServicesGrid";
+import FeaturedProducts, {
+  FeaturedProductsSkeleton,
+} from "@/components/home/FeaturedProducts";
+import LatestBlogPosts, {
+  LatestBlogPostsSkeleton,
+} from "@/components/home/LatestBlogPosts";
+import TrainingHighlights from "@/components/home/TrainingHighlights";
+import StatsCounter from "@/components/home/StatsCounter";
+import Testimonials from "@/components/home/Testimonials";
+import NewsletterCTA from "@/components/home/NewsletterCTA";
+import {OrganizationJsonLd, WebsiteJsonLd} from "@/components/JsonLd";
 
-const Home = () => {
-  return (
-    <div className="flex flex-col w-full md:w-12/12">
-      <Hero />
+export const revalidate = 60;
 
-      <Service />
-
-      <div className="w-full px-6 py-12 mx-auto space-y-8 md:px-32 bg-slate-100">
-        <h4 className="container text-3xl font-bold md:text-4xl text-bgPrimary">
-          Explore Our recommendations
-        </h4>
-
-        <HomeProduct />
-
-        <div className="container">
-          <Link
-            href="/shop"
-            className="py-3 font-sans font-semibold underline text-bgPrimary"
-          >
-            View Shop
-          </Link>
-        </div>
-      </div>
-
-      <Newsletter />
-    </div>
-  );
+export const metadata: Metadata = {
+  title:
+    "Frima Technology | PC & Laptop Repairs, COMPTIA Training & Accessories",
+  description:
+    "Frima Technology offers expert PC and laptop repair services, COMPTIA certification training (A+, Network+, Security+), IT support for businesses, and quality computer accessories in Benin City, Nigeria.",
+  keywords: [
+    "PC repair Benin City",
+    "laptop repair Benin City",
+    "COMPTIA training Nigeria",
+    "COMPTIA A+ certification",
+    "COMPTIA Network+",
+    "COMPTIA Security+",
+    "computer accessories Nigeria",
+    "IT support Benin City",
+    "Frima Technology",
+    "computer repair services",
+    "laptop screen replacement",
+    "IT training",
+    "network setup",
+    "cybersecurity training",
+    "computer sales Nigeria",
+  ],
+  openGraph: {
+    title:
+      "Frima Technology | PC & Laptop Repairs, COMPTIA Training & Accessories",
+    description:
+      "Expert PC and laptop repairs, COMPTIA certification training, IT support, and quality computer accessories in Benin City.",
+    type: "website",
+    url: "https://www.frimatechnology.com",
+    images: [
+      {
+        url: "https://www.frimatechnology.com/images/logo.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Frima Technology — Repairs, Training, and Accessories",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@frimatech",
+    title:
+      "Frima Technology | PC & Laptop Repairs, COMPTIA Training & Accessories",
+    description:
+      "Expert PC and laptop repairs, COMPTIA certification training, IT support, and quality computer accessories in Benin City.",
+    images: ["https://www.frimatechnology.com/images/logo.jpeg"],
+  },
+  alternates: {
+    canonical: "https://www.frimatechnology.com",
+  },
 };
 
-export default Home;
+export default function HomePage() {
+  return (
+    <>
+      <OrganizationJsonLd />
+      <WebsiteJsonLd />
+      <HeroCarousel />
+      <ServicesGrid />
+      <AnimateOnEnter>
+        <Suspense fallback={<FeaturedProductsSkeleton />}>
+          <FeaturedProducts />
+        </Suspense>
+      </AnimateOnEnter>
+      <AnimateOnEnter>
+        <Suspense fallback={<LatestBlogPostsSkeleton />}>
+          <LatestBlogPosts />
+        </Suspense>
+      </AnimateOnEnter>
+      <TrainingHighlights />
+      <StatsCounter />
+      <Testimonials />
+      <NewsletterCTA />
+    </>
+  );
+}

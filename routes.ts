@@ -12,6 +12,8 @@ export const publicRoutes = [
   "/policy",
   "/cart",
   "/blog",
+  "/training",
+  "/studio",
   "/terms",
   "/api/products",
   "/api/products/:id",

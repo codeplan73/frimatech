@@ -12,11 +12,17 @@ const nextConfig = {
         hostname: "res.cloudinary.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
   },
   env: {
     AUTH_SECRET: process.env.AUTH_SECRET,
   },
+  
 };
 
 export default nextConfig;

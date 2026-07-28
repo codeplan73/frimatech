@@ -1,0 +1,9 @@
+This is a Full workflow tier build. The feature stays in-progress. Recommended sequence:
+
+1. Run /clear to start a fresh session (state lives in files, long design chat costs tokens)
+2. Run /check verify home-page-redesign to drive the verify steps against the real app
+3. Run /test home-page-redesign to lock durable test coverage
+4. Run /check review on a different model before merge
+5. Then /architect for the next page in the redesign (shop page, about page, training page, blog wiring, etc.)
+
+The build compiles and the dev server starts. Dynamic sections will show empty states until Sanity has content (featured products and blog posts). Static sections render immediately.

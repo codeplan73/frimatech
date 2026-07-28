@@ -12,8 +12,8 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 import { cn } from "@/lib/utils";
 
