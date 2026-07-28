@@ -4,7 +4,6 @@ import {useState, useEffect} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {usePathname, useRouter} from "next/navigation";
-import {useSession} from "next-auth/react";
 import {Menu, X, ShoppingCart, ChevronDown, User} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {
@@ -30,7 +29,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const currentPath = usePathname();
-  const session = useSession();
   const router = useRouter();
   const {items} = useCartStore();
   const cartCount = hydrated ? items() : 0;
@@ -123,60 +121,6 @@ const Navbar = () => {
           </Link>
 
           {/* Auth Section */}
-          {session.data?.user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className={`flex items-center gap-1 hover:bg-white/10 hover:text-white ${
-                    scrolled ? "text-[#E8D7BD]" : "text-white/90"
-                  }`}
-                >
-                  <User className="h-4 w-4" />
-                  <span className="max-w-[100px] truncate text-sm">
-                    {session.data.user.name}
-                  </span>
-                  <ChevronDown className="h-3 w-3 opacity-50" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                {session.data.user.role === "ADMIN" && (
-                  <>
-                    <DropdownMenuItem asChild>
-                      <Link href="/dashboard">Dashboard</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                  </>
-                )}
-                <DropdownMenuItem asChild>
-                  <Link href="/orders">My Orders</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/settings">Settings</Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  onClick={() => logout()}
-                  className="cursor-pointer"
-                >
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Link
-              href="/auth/login"
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                isActive("/auth/login")
-                  ? "bg-white/15 text-white"
-                  : scrolled
-                    ? "text-[#E8D7BD] hover:bg-white/10 hover:text-white"
-                    : "text-white/90 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              Login
-            </Link>
-          )}
 
           {/* Get a Quote CTA */}
           <Button
@@ -257,58 +201,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                <li className="border-t mt-2 pt-2">
-                  {session.data?.user ? (
-                    <>
-                      <div className="px-4 py-2 text-sm text-slate-500">
-                        Signed in as{" "}
-                        <span className="font-medium text-slate-900">
-                          {session.data.user.name}
-                        </span>
-                      </div>
-                      {session.data.user.role === "ADMIN" && (
-                        <Link
-                          href="/dashboard"
-                          onClick={() => setMobileOpen(false)}
-                          className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                        >
-                          Dashboard
-                        </Link>
-                      )}
-                      <Link
-                        href="/orders"
-                        onClick={() => setMobileOpen(false)}
-                        className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                      >
-                        My Orders
-                      </Link>
-                      <Link
-                        href="/settings"
-                        onClick={() => setMobileOpen(false)}
-                        className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                      >
-                        Settings
-                      </Link>
-                      <button
-                        onClick={() => {
-                          setMobileOpen(false);
-                          logout();
-                        }}
-                        className="block w-full px-4 py-3 text-start text-sm font-medium text-red-600 hover:bg-slate-50"
-                      >
-                        Logout
-                      </button>
-                    </>
-                  ) : (
-                    <Link
-                      href="/auth/login"
-                      onClick={() => setMobileOpen(false)}
-                      className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                    >
-                      Login
-                    </Link>
-                  )}
-                </li>
+                     
                 <li className="px-4 pt-3">
                   <Button
                     asChild

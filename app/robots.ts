@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/dashboard/", "/api/", "/studio/"],
+      disallow: ["/studio/"],
     },
     sitemap: "https://www.frimatechnology.com/sitemap.xml",
   };
