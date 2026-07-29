@@ -8,5 +8,5 @@ export const stats: Stat[] = [
   {value: 500, suffix: "+", label: "Repairs Completed"},
   {value: 200, suffix: "+", label: "Students Trained"},
   {value: 50, suffix: "+", label: "Corporate Clients"},
-  {value: 15, suffix: "+", label: "Years Experience"},
+  {value: 8, suffix: "+", label: "Years Experience"},
 ];

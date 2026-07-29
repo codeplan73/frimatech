@@ -23,7 +23,7 @@ export const heroSlides: HeroSlide[] = [
     imageAlt:
       "Professional computer and laptop repair service at a workbench",
     icon: Wrench,
-    heading: "Professional Computer & Laptop Repairs",
+    heading: "Computer Sales Repair and Maintainace",
     subtitle:
       "Fast, reliable repairs for all brands. From screen replacements to motherboard fixes, our certified technicians get your device back to peak performance.",
     ctaText: "Shop Repairs",
@@ -35,7 +35,7 @@ export const heroSlides: HeroSlide[] = [
     imageAlt:
       "Students in a technology training classroom with computers",
     icon: GraduationCap,
-    heading: "Get COMPTIA Certified",
+    heading: "Technology Trianinings on IT Support and Networking",
     subtitle:
       "Launch your IT career with expert led COMPTIA A+, Network+, and Security+ training. Hands on labs, exam prep, and career guidance included.",
     ctaText: "View Training",
@@ -46,7 +46,7 @@ export const heroSlides: HeroSlide[] = [
       "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=600&fit=crop&auto=format",
     imageAlt: "IT support team working in a modern office server room",
     icon: Building2,
-    heading: "IT Support for Your Business",
+    heading: "IOT and Technology Security",
     subtitle:
       "Keep your business running smoothly with our managed IT support services. Network setup, cybersecurity, cloud migration, and ongoing maintenance.",
     ctaText: "Contact Us",
