@@ -35,7 +35,7 @@ export const heroSlides: HeroSlide[] = [
     imageAlt:
       "Students in a technology training classroom with computers",
     icon: GraduationCap,
-    heading: "Technology Trianinings on IT Support and Networking",
+    heading: "Technology Trainings on IT Support and Networking",
     subtitle:
       "Launch your IT career with expert led COMPTIA A+, Network+, and Security+ training. Hands on labs, exam prep, and career guidance included.",
     ctaText: "View Training",
